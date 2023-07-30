@@ -1,0 +1,33 @@
+import { Mat3 } from './Mat3.js';
+import { Mat4 } from './Mat4.js';
+import { Vec4 } from './Vec4.js';
+export type Vec3JSON = number[];
+export declare class Vec3 {
+    x: number;
+    y: number;
+    z: number;
+    constructor(x?: number, y?: number, z?: number);
+    clone(result?: Vec3): Vec3;
+    set(x: number, y: number, z: number): this;
+}
+export declare function vec3Equals(a: Vec3, b: Vec3, tolerance?: number): boolean;
+export declare function vec3Add(a: Vec3, b: Vec3, result?: Vec3): Vec3;
+export declare function vec3Subtract(a: Vec3, b: Vec3, result?: Vec3): Vec3;
+export declare function vec3MultiplyByScalar(a: Vec3, b: number, result?: Vec3): Vec3;
+export declare function vec3Negate(a: Vec3, result?: Vec3): Vec3;
+export declare function vec3Length(a: Vec3): number;
+export declare function vec3Normalize(a: Vec3, result?: Vec3): Vec3;
+export declare function vec3Dot(a: Vec3, b: Vec3): number;
+export declare function vec3Cross(a: Vec3, b: Vec3, result?: Vec3): Vec3;
+export declare function vec3Mix(a: Vec3, b: Vec3, t: number, result?: Vec3): Vec3;
+export declare function vec3FromArray(array: Float32Array | number[], offset?: number, result?: Vec3): Vec3;
+export declare function vec3ToArray(a: Vec3, array: Float32Array | number[], offset?: number): void;
+export declare function vec3ToString(a: Vec3): string;
+export declare function vec3Parse(text: string, result?: Vec3): Vec3;
+export declare function hslToRGB(hsl: Vec3, result?: Vec3): Vec3;
+export declare function rgbToHSL(rgb: Vec3, result?: Vec3): Vec3;
+export declare function hexToRGB(hex: number, result?: Vec3): Vec3;
+export declare function rgbToHex(rgb: Vec3): number;
+export declare function mat3ToEuler(m: Mat3, result?: Vec3): Vec3;
+export declare function mat4ToEuler(m: Mat4, result?: Vec3): Vec3;
+export declare function quatToEuler(q: Vec4, result?: Vec3): Vec3;
