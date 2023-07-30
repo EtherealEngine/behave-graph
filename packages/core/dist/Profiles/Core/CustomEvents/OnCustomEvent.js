@@ -18,6 +18,7 @@ class OnCustomEvent extends EventNode2 {
         });
         this.onCustomEvent = undefined;
         this.customEvent = customEvent;
+        graph.customEvents[configuration.customEventId] = customEvent;
     }
     init(engine) {
         Assert.mustBeTrue(this.onCustomEvent === undefined);

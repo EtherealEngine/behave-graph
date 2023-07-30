@@ -1,4 +1,5 @@
 import { EventEmitter } from '@behave-graph/core';
+import { Quaternion, Vector3, Vector4 } from 'three';
 import { Vec3 } from './Values/Internal/Vec3.js';
 import { Vec4 } from './Values/Internal/Vec4.js';
 var Resource;
@@ -12,6 +13,15 @@ function toVec3(value) {
 }
 function toVec4(value) {
     return new Vec4(value.x, value.y, value.z, value.w);
+}
+export function toVector3(value) {
+    return new Vector3(value.x, value.y, value.z);
+}
+export function toVector4(value) {
+    return new Vector4(value.x, value.y, value.z, value.w);
+}
+export function toQuat(value) {
+    return new Quaternion(value.x, value.y, value.z, value.w);
 }
 const shortPathRegEx = /^\/?(?<resource>[^/]+)\/(?<index>\d+)$/;
 const jsonPathRegEx = /^\/?(?<resource>[^/]+)\/(?<index>\d+)\/(?<property>[^/]+)$/;

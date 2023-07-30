@@ -1,13 +1,18 @@
 import { Choices } from '@behave-graph/core';
-import { Material, Object3D } from 'three';
+import { Material, Object3D, Quaternion, Vector3, Vector4 } from 'three';
 import { GLTF } from 'three-stdlib';
 import { IScene } from './Abstractions/IScene.js';
 import { GLTFJson } from './GLTFJson.js';
+import { Vec3 } from './Values/Internal/Vec3.js';
+import { Vec4 } from './Values/Internal/Vec4.js';
 declare enum Resource {
     nodes = "nodes",
     materials = "materials",
     animations = "animations"
 }
+export declare function toVector3(value: Vec3): Vector3;
+export declare function toVector4(value: Vec4): Vector4;
+export declare function toQuat(value: Vec4): Quaternion;
 export declare type ObjectMap = {
     nodes: {
         [name: string]: Object3D;

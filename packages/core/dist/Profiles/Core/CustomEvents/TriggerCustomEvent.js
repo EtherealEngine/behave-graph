@@ -17,6 +17,7 @@ class TriggerCustomEvent extends FlowNode2 {
             configuration
         });
         this.customEvent = customEvent;
+        graph.customEvents[configuration.customEventId] = customEvent;
     }
     triggered(fiber, triggeringSocketName) {
         const parameters = {};
@@ -24,6 +25,7 @@ class TriggerCustomEvent extends FlowNode2 {
             parameters[parameterSocket.name] = this.readInput(parameterSocket.name);
         });
         this.customEvent.eventEmitter.emit(parameters);
+        fiber.commit(this, 'flow');
     }
 }
 TriggerCustomEvent.Description = new NodeDescription2({
