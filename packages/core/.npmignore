@@ -1,6 +1,0 @@
-node_modules
-.DS_Store
-node-spec.json
-*.blend1
-node-spec.csv
-**/public/js
