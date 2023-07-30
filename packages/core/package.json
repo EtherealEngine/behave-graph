@@ -6,7 +6,7 @@
   "main": "./dist/index.js",
   "source": "./src/index.ts",
   "scripts": {
-    "preinstall": "npm run build",
+    "postinstall": "npm run build",
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "jest"
