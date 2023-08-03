@@ -10,15 +10,14 @@ export const Sequence = makeFlowNodeDefinition({
   label: 'Sequence',
   configuration: {
     numOutputs: {
-      valueType: 'number',
-      defaultValue: 4
+      valueType: 'number'
     }
   },
   in: {
     flow: 'flow'
   },
   out: (configuration) => {
-    const numOutputs = configuration.numOutputs ?? 4;
+    const numOutputs = configuration.numOutputs;
     const sockets: SocketsList = [];
 
     for (let outputIndex = 1; outputIndex <= numOutputs; outputIndex++) {

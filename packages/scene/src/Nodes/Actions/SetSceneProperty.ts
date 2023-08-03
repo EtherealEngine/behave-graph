@@ -7,7 +7,7 @@ export const SetSceneProperty = (valueTypeNames: string[]) =>
     makeFlowNodeDefinition({
       typeName: `scene/set/${valueTypeName}`,
       category: NodeCategory.Effect,
-      label: `Set scene ${valueTypeName}`,
+      label: `Set Scene ${valueTypeName}`,
       in: {
         jsonPath: (_, graphApi) => {
           const scene = graphApi.getDependency<IScene>('IScene');
