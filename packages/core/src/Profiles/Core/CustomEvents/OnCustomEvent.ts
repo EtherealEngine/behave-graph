@@ -53,6 +53,7 @@ export class OnCustomEvent extends EventNode2 {
       configuration
     });
     this.customEvent = customEvent;
+    graph.customEvents[configuration.customEventId] = customEvent;
   }
   private onCustomEvent:
     | ((parameters: { [parameter: string]: any }) => void)
