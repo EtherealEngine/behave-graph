@@ -4,5 +4,6 @@ export declare const Sequence: import("../../../Nodes/NodeDefinitions.js").IFlow
 }, (configuration: import("../../../index.js").NodeConfiguration) => SocketsList, {
     numOutputs: {
         valueType: string;
+        defaultValue: number;
     };
 }, undefined>;
