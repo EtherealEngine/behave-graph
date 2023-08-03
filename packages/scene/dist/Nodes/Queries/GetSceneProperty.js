@@ -2,7 +2,7 @@ import { makeFunctionNodeDefinition, NodeCategory } from '@behave-graph/core';
 export const GetSceneProperty = (valueTypeNames) => valueTypeNames.map((valueTypeName) => makeFunctionNodeDefinition({
     typeName: `scene/get/${valueTypeName}`,
     category: NodeCategory.Query,
-    label: `Scene set ${valueTypeName}`,
+    label: `Get scene  ${valueTypeName}`,
     in: {
         jsonPath: (_, graphApi) => {
             const scene = graphApi.getDependency('IScene');

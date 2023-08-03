@@ -2,7 +2,7 @@ import { makeFlowNodeDefinition, NodeCategory } from '@behave-graph/core';
 export const SetSceneProperty = (valueTypeNames) => valueTypeNames.map((valueTypeName) => makeFlowNodeDefinition({
     typeName: `scene/set/${valueTypeName}`,
     category: NodeCategory.Effect,
-    label: `Set Scene ${valueTypeName}`,
+    label: `Set scene ${valueTypeName}`,
     in: {
         jsonPath: (_, graphApi) => {
             const scene = graphApi.getDependency('IScene');
