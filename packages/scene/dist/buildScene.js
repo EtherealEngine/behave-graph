@@ -9,9 +9,13 @@ var Resource;
     Resource["animations"] = "animations";
 })(Resource || (Resource = {}));
 function toVec3(value) {
+    if (!value)
+        return null;
     return new Vec3(value.x, value.y, value.z);
 }
 function toVec4(value) {
+    if (!value)
+        return null;
     return new Vec4(value.x, value.y, value.z, value.w);
 }
 export function toVector3(value) {
