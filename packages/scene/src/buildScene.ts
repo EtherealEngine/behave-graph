@@ -22,11 +22,11 @@ enum Resource {
 }
 
 function toVec3(value: Vector3): Vec3 | null {
-  if(!value) return null
+  if (!value) return null;
   return new Vec3(value.x, value.y, value.z);
 }
 function toVec4(value: Vector4 | Quaternion): Vec4 | null {
-  if(!value) return null
+  if (!value) return null;
   return new Vec4(value.x, value.y, value.z, value.w);
 }
 export function toVector3(value: Vec3): Vector3 {
