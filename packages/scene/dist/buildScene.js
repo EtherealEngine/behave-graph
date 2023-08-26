@@ -9,23 +9,19 @@ var Resource;
     Resource["animations"] = "animations";
 })(Resource || (Resource = {}));
 function toVec3(value) {
-    if (!value)
-        return null;
     return new Vec3(value.x, value.y, value.z);
 }
 function toVec4(value) {
-    if (!value)
-        return null;
     return new Vec4(value.x, value.y, value.z, value.w);
 }
 export function toVector3(value) {
-    return new Vector3(value.x, value.y, value.z);
+    return value ? new Vector3(value.x, value.y, value.z) : null;
 }
 export function toVector4(value) {
-    return new Vector4(value.x, value.y, value.z, value.w);
+    return value ? new Vector4(value.x, value.y, value.z, value.w) : null;
 }
 export function toQuat(value) {
-    return new Quaternion(value.x, value.y, value.z, value.w);
+    return value ? new Quaternion(value.x, value.y, value.z, value.w) : null;
 }
 const shortPathRegEx = /^\/?(?<resource>[^/]+)\/(?<index>\d+)$/;
 const jsonPathRegEx = /^\/?(?<resource>[^/]+)\/(?<index>\d+)\/(?<property>[^/]+)$/;
