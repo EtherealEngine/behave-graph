@@ -21,24 +21,22 @@ enum Resource {
   animations = 'animations'
 }
 
-function toVec3(value: Vector3): Vec3 | null {
-  if (!value) return null;
+function toVec3(value: Vector3): Vec3 {
   return new Vec3(value.x, value.y, value.z);
 }
-function toVec4(value: Vector4 | Quaternion): Vec4 | null {
-  if (!value) return null;
+function toVec4(value: Vector4 | Quaternion): Vec4 {
   return new Vec4(value.x, value.y, value.z, value.w);
 }
-export function toVector3(value: Vec3): Vector3 {
-  return new Vector3(value.x, value.y, value.z);
+export function toVector3(value: Vec3): Vector3 | null {
+  return value ? new Vector3(value.x, value.y, value.z) : null;
 }
 
-export function toVector4(value: Vec4): Vector4 {
-  return new Vector4(value.x, value.y, value.z, value.w);
+export function toVector4(value: Vec4): Vector4 | null {
+  return value ? new Vector4(value.x, value.y, value.z, value.w) : null;
 }
 
-export function toQuat(value: Vec4): Quaternion {
-  return new Quaternion(value.x, value.y, value.z, value.w);
+export function toQuat(value: Vec4): Quaternion | null {
+  return value ? new Quaternion(value.x, value.y, value.z, value.w) : null;
 }
 
 export declare type ObjectMap = {
