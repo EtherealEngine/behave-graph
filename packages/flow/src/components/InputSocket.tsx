@@ -9,6 +9,7 @@ import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { colors, valueTypeColorMap } from '../util/colors.js';
 import { isValidConnection } from '../util/isValidConnection.js';
 import { AutoSizeInput } from './AutoSizeInput.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export type InputSocketProps = {
   connected: boolean;

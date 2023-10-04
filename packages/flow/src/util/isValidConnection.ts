@@ -1,8 +1,8 @@
 import { Connection, ReactFlowInstance } from 'reactflow';
 
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
 import { isHandleConnected } from './isHandleConnected.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export const isValidConnection = (
   connection: Connection,
@@ -21,7 +21,7 @@ export const isValidConnection = (
     specGenerator,
     sourceNode.type,
     sourceNode.data.configuration,
-    'source'
+    'source',
   );
 
   const sourceSocket = sourceSockets?.find(
@@ -32,7 +32,11 @@ export const isValidConnection = (
     specGenerator,
     targetNode.type,
     targetNode.data.configuration,
+<<<<<<< HEAD
     'target'
+=======
+    'target',
+>>>>>>> 3d2383d23869871bfea0f78f2fc61aa55427d263
   );
 
   const targetSocket = targetSockets?.find(

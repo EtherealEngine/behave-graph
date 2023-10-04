@@ -5,6 +5,7 @@ import { useEdges, useNodes } from 'reactflow';
 import { NodeSpecGenerator } from '../../hooks/useNodeSpecGenerator.js';
 import { flowToBehave } from '../../transformers/flowToBehave.js';
 import { Modal } from './Modal.js';
+import { NodeSpecGenerator } from '../../hooks/useNodeSpecGenerator.js';
 
 export type SaveModalProps = {
   open?: boolean;

@@ -1,7 +1,5 @@
-import { GraphJSON, NodeJSON, ValueJSON } from '@behave-graph/core';
+import { GraphJSON, NodeJSON, NodeSpecJSON } from '@behave-graph/core';
 import { Edge, Node } from 'reactflow';
-
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 const isNullish = (value: any): value is null | undefined =>
   value === undefined || value === null;
@@ -9,16 +7,17 @@ const isNullish = (value: any): value is null | undefined =>
 export const flowToBehave = (
   nodes: Node[],
   edges: Edge[],
-  specGenerator: NodeSpecGenerator
+  nodeSpecJSON: NodeSpecJSON[]
 ): GraphJSON => {
   const graph: GraphJSON = { nodes: [], variables: [], customEvents: [] };
 
   nodes.forEach((node) => {
     if (node.type === undefined) return;
-    const nodeSpec = specGenerator.getNodeSpec(
-      node.type,
-      node.data.configuration
+
+    const nodeSpec = nodeSpecJSON.find(
+      (nodeSpec) => nodeSpec.type === node.type
     );
+
     if (nodeSpec === undefined) return;
 
     const behaveNode: NodeJSON = {
@@ -29,31 +28,13 @@ export const flowToBehave = (
         positionY: String(node.position.y)
       }
     };
-    if (node.data.configuration) {
-      Object.entries(node.data.configuration).forEach(([key, value]) => {
-        if (behaveNode.configuration === undefined) {
-          behaveNode.configuration = {};
-        }
-        behaveNode.configuration[key] = value as ValueJSON;
-      });
-    } else {
-      if (behaveNode.configuration === undefined) {
-        behaveNode.configuration = {};
-      }
-    }
 
-    if (node.data.configuration) {
-      Object.entries(node.data.values).forEach(([key, value]) => {
-        if (behaveNode.parameters === undefined) {
-          behaveNode.parameters = {};
-        }
-        behaveNode.parameters[key] = { value: value as string };
-      });
-    } else {
+    Object.entries(node.data).forEach(([key, value]) => {
       if (behaveNode.parameters === undefined) {
         behaveNode.parameters = {};
       }
-    }
+      behaveNode.parameters[key] = { value: value as string };
+    });
 
     edges
       .filter((edge) => edge.target === node.id)

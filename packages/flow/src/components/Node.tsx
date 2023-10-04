@@ -6,11 +6,11 @@ import {
   useChangeNodeConfig,
   useChangeNodeData
 } from '../hooks/useChangeNodeData.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { isHandleConnected } from '../util/isHandleConnected.js';
 import InputSocket from './InputSocket.js';
 import NodeContainer from './NodeContainer.js';
 import OutputSocket from './OutputSocket.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 type NodeProps = FlowNodeProps & {
   spec: NodeSpecJSON;
@@ -64,7 +64,7 @@ export const Node: React.FC<NodeProps> = ({
             <InputSocket
               {...input}
               specGenerator={specGenerator}
-              value={data.values[input.name] ?? input.defaultValue}
+              value={data.values?.[input.name] ?? input.defaultValue}
               onChange={handleChange}
               connected={isHandleConnected(edges, id, input.name, 'target')}
             />

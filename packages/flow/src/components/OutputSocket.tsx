@@ -8,6 +8,7 @@ import { Connection, Handle, Position, useReactFlow } from 'reactflow';
 import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { colors, valueTypeColorMap } from '../util/colors.js';
 import { isValidConnection } from '../util/isValidConnection.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export type OutputSocketProps = {
   connected: boolean;
