@@ -7,7 +7,11 @@ import { NodeSpecGenerator } from './useNodeSpecGenerator.js';
 const getCustomNodeTypes = (specGenerator: NodeSpecGenerator) => {
   return specGenerator.getNodeTypes().reduce((nodes: NodeTypes, nodeType) => {
     nodes[nodeType] = (props) => {
-      let spec = specGenerator.getNodeSpec(nodeType, props.data.configuration);
+      const spec = specGenerator.getNodeSpec(
+        nodeType,
+        props.data.configuration
+      );
+
       return <Node spec={spec} specGenerator={specGenerator} {...props} />;
     };
     return nodes;

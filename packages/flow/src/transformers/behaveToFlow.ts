@@ -20,8 +20,8 @@ export const behaveToFlow = (graph: GraphJSON): [Node[], Edge[]] => {
       },
       data: {
         configuration: {} as NodeConfigurationJSON,
-        values: {} as { [key: string]: any },
-      },
+        values: {} as { [key: string]: any }
+      }
     };
 
     nodes.push(node);

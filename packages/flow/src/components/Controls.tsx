@@ -12,11 +12,11 @@ import { useState } from 'react';
 import React from 'react';
 import { ControlButton, Controls } from 'reactflow';
 
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { ClearModal } from './modals/ClearModal.js';
 import { HelpModal } from './modals/HelpModal.js';
 import { Examples, LoadModal } from './modals/LoadModal.js';
 import { SaveModal } from './modals/SaveModal.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export type CustomControlsProps = {
   playing: boolean;

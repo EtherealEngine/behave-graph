@@ -6,7 +6,7 @@ import {
   ManualLifecycleEventEmitter,
   registerCoreProfile,
   validateNodeRegistry,
-  writeDefaultNodeSpecsToJSON,
+  writeDefaultNodeSpecsToJSON
 } from '@behave-graph/core';
 import { DummyScene, registerSceneProfile } from '@behave-graph/scene';
 import { program } from 'commander';

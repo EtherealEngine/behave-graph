@@ -6,7 +6,7 @@ import {
   NodeConfigurationJSON,
   NodeSpecJSON,
   writeDefaultNodeSpecsToJSON,
-  writeNodeSpecToJSON,
+  writeNodeSpecToJSON
 } from '@behave-graph/core';
 import { useEffect, useState } from 'react';
 
@@ -20,11 +20,17 @@ export class NodeSpecGenerator {
     return Object.keys(this.registry.nodes);
   }
 
-  getNodeSpec(nodeTypeName: string, configuration: NodeConfigurationJSON): NodeSpecJSON {
-    let cacheKey = nodeTypeName + '\x01' + JSON.stringify(configuration);
-
+  getNodeSpec(
+    nodeTypeName: string,
+    configuration: NodeConfigurationJSON
+  ): NodeSpecJSON {
+    const cacheKey = nodeTypeName + '\x01' + JSON.stringify(configuration);
     if (!this.specsCache[cacheKey]) {
-      this.specsCache[cacheKey] = writeNodeSpecToJSON(this.registry, nodeTypeName, configuration);
+      this.specsCache[cacheKey] = writeNodeSpecToJSON(
+        this.registry,
+        nodeTypeName,
+        configuration
+      );
     }
 
     return this.specsCache[cacheKey];

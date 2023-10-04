@@ -1,15 +1,15 @@
 import { Node, OnConnectStartParams } from 'reactflow';
 import { v4 as uuidv4 } from 'uuid';
 
-import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
 import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
+import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
 
 export const calculateNewEdge = (
   originNode: Node,
   destinationNodeType: string,
   destinationNodeId: string,
   connection: OnConnectStartParams,
-  specGenerator: NodeSpecGenerator,
+  specGenerator: NodeSpecGenerator
 ) => {
   const sockets = getSocketsByNodeTypeAndHandleType(
     specGenerator,

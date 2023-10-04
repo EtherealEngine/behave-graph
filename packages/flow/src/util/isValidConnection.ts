@@ -1,14 +1,13 @@
-import { NodeSpecJSON } from '@behave-graph/core';
 import { Connection, ReactFlowInstance } from 'reactflow';
 
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
 import { isHandleConnected } from './isHandleConnected.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export const isValidConnection = (
   connection: Connection,
   instance: ReactFlowInstance,
-  specGenerator: NodeSpecGenerator,
+  specGenerator: NodeSpecGenerator
 ) => {
   if (connection.source === null || connection.target === null) return false;
 
@@ -22,7 +21,7 @@ export const isValidConnection = (
     specGenerator,
     sourceNode.type,
     sourceNode.data.configuration,
-    'source',
+    'source'
   );
 
   const sourceSocket = sourceSockets?.find(
@@ -33,7 +32,7 @@ export const isValidConnection = (
     specGenerator,
     targetNode.type,
     targetNode.data.configuration,
-    'target',
+    'target'
   );
 
   const targetSocket = targetSockets?.find(

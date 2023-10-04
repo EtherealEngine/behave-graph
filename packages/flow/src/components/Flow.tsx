@@ -51,7 +51,7 @@ export const Flow: React.FC<FlowProps> = ({
     nodes,
     onEdgesChange,
     onNodesChange,
-    specGenerator,
+    specGenerator
   });
 
   const { togglePlay, playing } = useGraphRunner({

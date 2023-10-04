@@ -1,12 +1,9 @@
-import {
-  getCoreRegistry,
-  GraphJSON,
-} from '@behave-graph/core';
+import { getCoreRegistry, GraphJSON } from '@behave-graph/core';
 
 import rawFlowGraph from '../../../../graphs/react-flow/graph.json';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator';
 import { behaveToFlow } from './behaveToFlow.js';
 import { flowToBehave } from './flowToBehave.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator';
 
 const flowGraph = rawFlowGraph as GraphJSON;
 

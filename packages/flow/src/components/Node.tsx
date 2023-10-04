@@ -1,13 +1,16 @@
-import { NodeSpecJSON } from '@behave-graph/core';
+import { NodeSpecJSON, createNode } from '@behave-graph/core';
 import React from 'react';
 import { NodeProps as FlowNodeProps, useEdges } from 'reactflow';
 
-import { useChangeNodeData } from '../hooks/useChangeNodeData.js';
+import {
+  useChangeNodeConfig,
+  useChangeNodeData
+} from '../hooks/useChangeNodeData.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { isHandleConnected } from '../util/isHandleConnected.js';
 import InputSocket from './InputSocket.js';
 import NodeContainer from './NodeContainer.js';
 import OutputSocket from './OutputSocket.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 type NodeProps = FlowNodeProps & {
   spec: NodeSpecJSON;
@@ -29,11 +32,22 @@ export const Node: React.FC<NodeProps> = ({
   data,
   spec,
   selected,
-  specGenerator,
+  specGenerator
 }: NodeProps) => {
   const edges = useEdges();
   const handleChange = useChangeNodeData(id);
+  const handleConfigChange = useChangeNodeConfig(id);
+
   const pairs = getPairs(spec.inputs, spec.outputs);
+  const configuration = spec.configuration;
+
+  console.log(
+    'DEBUG node',
+    spec.label,
+    configuration,
+    data.configuration,
+    Object.entries(configuration)
+  );
   return (
     <NodeContainer
       title={spec.label}
@@ -64,6 +78,29 @@ export const Node: React.FC<NodeProps> = ({
           )}
         </div>
       ))}
+      {Object.keys(configuration).length > 0 &&
+        Object.entries(configuration).map(([name, config], ix) => (
+          <div
+            key={ix}
+            className="flex flex-row justify-between gap-8 relative px-2"
+            // className={styles.container}
+          >
+            {config && (
+              <InputSocket
+                {...config}
+                name={name}
+                defaultValue={config.defaultValue}
+                specGenerator={specGenerator}
+                value={data.configuration[name]}
+                onChange={(name, value) => {
+                  console.log('DEBUG changed value to ', value);
+                  handleConfigChange(name, value);
+                }}
+                connected={isHandleConnected(edges, id, name, 'target')}
+              />
+            )}
+          </div>
+        ))}
     </NodeContainer>
   );
 };

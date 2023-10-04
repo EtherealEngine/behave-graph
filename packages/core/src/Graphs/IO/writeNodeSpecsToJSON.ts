@@ -18,7 +18,11 @@ function toChoices(valueChoices: Choices | undefined): ChoiceJSON | undefined {
 }
 
 // create JSON specs for a single node based on given configuration
-export function writeNodeSpecToJSON(registry: IRegistry, nodeTypeName: string, configuration: NodeConfigurationJSON): NodeSpecJSON {
+export function writeNodeSpecToJSON(
+  registry: IRegistry,
+  nodeTypeName: string,
+  configuration: NodeConfigurationJSON
+): NodeSpecJSON {
   const graph = makeGraphApi({
     ...registry,
     customEvents: {},
@@ -29,16 +33,16 @@ export function writeNodeSpecToJSON(registry: IRegistry, nodeTypeName: string, c
     graph,
     registry,
     nodeTypeName,
-    nodeConfiguration: configuration,
+    nodeConfiguration: configuration
   });
-
+  const nodeDefinition: any = registry.nodes[nodeTypeName];
   const nodeSpecJSON: NodeSpecJSON = {
     type: nodeTypeName,
     category: node.description.category as NodeCategory,
     label: node.description.label,
     inputs: [],
     outputs: [],
-    configuration: []
+    configuration: nodeDefinition.configuration ?? []
   };
 
   node.inputs.forEach((inputSocket) => {
@@ -75,7 +79,9 @@ export function writeNodeSpecToJSON(registry: IRegistry, nodeTypeName: string, c
 }
 
 // create JSON specs for all nodes with empty configuration
-export function writeDefaultNodeSpecsToJSON(registry: IRegistry): NodeSpecJSON[] {
+export function writeDefaultNodeSpecsToJSON(
+  registry: IRegistry
+): NodeSpecJSON[] {
   const nodeSpecsJSON: NodeSpecJSON[] = [];
 
   Object.keys(registry.nodes).forEach((nodeTypeName) => {

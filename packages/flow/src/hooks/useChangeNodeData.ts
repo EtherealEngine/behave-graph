@@ -22,3 +22,26 @@ export const useChangeNodeData = (id: string) => {
     [instance, id]
   );
 };
+
+export const useChangeNodeConfig = (id: string) => {
+  const instance = useReactFlow();
+
+  return useCallback(
+    (key: string, value: any) => {
+      console.log('DEBUG changing config', key, value);
+      instance.setNodes((nodes) =>
+        nodes.map((n) => {
+          if (n.id !== id) return n;
+          return {
+            ...n,
+            data: {
+              ...n.data,
+              [key]: value
+            }
+          };
+        })
+      );
+    },
+    [instance, id]
+  );
+};

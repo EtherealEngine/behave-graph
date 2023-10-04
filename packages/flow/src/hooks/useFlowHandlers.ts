@@ -17,7 +17,7 @@ type BehaveGraphFlow = ReturnType<typeof useBehaveGraphFlow>;
 const useNodePickFilters = ({
   nodes,
   lastConnectStart,
-  specGenerator,
+  specGenerator
 }: {
   nodes: Node[];
   lastConnectStart: OnConnectStartParams | undefined;
@@ -28,7 +28,9 @@ const useNodePickFilters = ({
   );
 
   useEffect(() => {
-    setNodePickFilters(getNodePickerFilters(nodes, lastConnectStart, specGenerator));
+    setNodePickFilters(
+      getNodePickerFilters(nodes, lastConnectStart, specGenerator)
+    );
   }, [nodes, lastConnectStart, specGenerator]);
 
   return nodePickFilters;
@@ -38,7 +40,7 @@ export const useFlowHandlers = ({
   onEdgesChange,
   onNodesChange,
   nodes,
-  specGenerator,
+  specGenerator
 }: Pick<BehaveGraphFlow, 'onEdgesChange' | 'onNodesChange'> & {
   nodes: Node[];
   specGenerator: NodeSpecGenerator | undefined;
@@ -82,7 +84,7 @@ export const useFlowHandlers = ({
         id: uuidv4(),
         type: nodeType,
         position,
-        data: {}
+        data: { configuration: {}, values: {} } //fill with default values here
       };
       onNodesChange([
         {
@@ -107,7 +109,7 @@ export const useFlowHandlers = ({
             nodeType,
             newNode.id,
             lastConnectStart,
-            specGenerator,
+            specGenerator
           )
         }
       ]);
@@ -118,7 +120,7 @@ export const useFlowHandlers = ({
       nodes,
       onEdgesChange,
       onNodesChange,
-      specGenerator,
+      specGenerator
     ]
   );
 
@@ -151,7 +153,7 @@ export const useFlowHandlers = ({
   const nodePickFilters = useNodePickFilters({
     nodes,
     lastConnectStart,
-    specGenerator,
+    specGenerator
   });
 
   return {
