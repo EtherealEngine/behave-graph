@@ -3,12 +3,12 @@ import { useMemo, useRef, useState } from 'react';
 import { useEdges, useNodes } from 'reactflow';
 import { flowToBehave } from '../../transformers/flowToBehave.js';
 import { Modal } from './Modal.js';
-export const SaveModal = ({ open = false, onClose, specJson }) => {
+export const SaveModal = ({ open = false, onClose, specGenerator }) => {
     const ref = useRef(null);
     const [copied, setCopied] = useState(false);
     const edges = useEdges();
     const nodes = useNodes();
-    const flow = useMemo(() => flowToBehave(nodes, edges, specJson), [nodes, edges, specJson]);
+    const flow = useMemo(() => flowToBehave(nodes, edges, specGenerator), [nodes, edges, specGenerator]);
     const jsonString = JSON.stringify(flow, null, 2);
     const handleCopy = () => {
         ref.current?.select();

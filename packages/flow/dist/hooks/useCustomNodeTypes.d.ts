@@ -1,5 +1,5 @@
-import { NodeSpecJSON } from '@behave-graph/core';
 import { NodeTypes } from 'reactflow';
-export declare const useCustomNodeTypes: ({ specJson }: {
-    specJson: NodeSpecJSON[] | undefined;
+import { NodeSpecGenerator } from './useNodeSpecGenerator.js';
+export declare const useCustomNodeTypes: ({ specGenerator }: {
+    specGenerator: NodeSpecGenerator | undefined;
 }) => NodeTypes | undefined;

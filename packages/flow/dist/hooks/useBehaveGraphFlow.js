@@ -15,7 +15,7 @@ export const fetchBehaviorGraphJson = async (url) =>
  * @param param0
  * @returns
  */
-export const useBehaveGraphFlow = ({ initialGraphJson, specJson }) => {
+export const useBehaveGraphFlow = ({ initialGraphJson, specGenerator }) => {
     const [graphJson, setStoredGraphJson] = useState();
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -36,14 +36,14 @@ export const useBehaveGraphFlow = ({ initialGraphJson, specJson }) => {
         setGraphJson(initialGraphJson);
     }, [initialGraphJson, setGraphJson]);
     useEffect(() => {
-        if (!specJson)
+        if (!specGenerator)
             return;
         // when nodes and edges are updated, update the graph json with the flow to behave behavior
-        const graphJson = flowToBehave(nodes, edges, specJson);
+        const graphJson = flowToBehave(nodes, edges, specGenerator);
         setStoredGraphJson(graphJson);
-    }, [nodes, edges, specJson]);
+    }, [nodes, edges, specGenerator]);
     const nodeTypes = useCustomNodeTypes({
-        specJson
+        specGenerator
     });
     return {
         nodes,

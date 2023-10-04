@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
-export const calculateNewEdge = (originNode, destinationNodeType, destinationNodeId, connection, specJSON) => {
-    const sockets = getSocketsByNodeTypeAndHandleType(specJSON, originNode.type, connection.handleType);
+export const calculateNewEdge = (originNode, destinationNodeType, destinationNodeId, connection, specGenerator) => {
+    const sockets = getSocketsByNodeTypeAndHandleType(specGenerator, originNode.type, originNode.data.configuration, connection.handleType);
     const originSocket = sockets?.find((socket) => socket.name === connection.handleId);
-    const newSockets = getSocketsByNodeTypeAndHandleType(specJSON, destinationNodeType, connection.handleType === 'source' ? 'target' : 'source');
+    const newSockets = getSocketsByNodeTypeAndHandleType(specGenerator, destinationNodeType, {}, connection.handleType === 'source' ? 'target' : 'source');
     const newSocket = newSockets?.find((socket) => socket.valueType === originSocket?.valueType);
     if (connection.handleType === 'source') {
         return {

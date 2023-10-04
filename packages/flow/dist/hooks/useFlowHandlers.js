@@ -2,14 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { calculateNewEdge } from '../util/calculateNewEdge.js';
 import { getNodePickerFilters } from '../util/getPickerFilters.js';
-const useNodePickFilters = ({ nodes, lastConnectStart, specJSON }) => {
-    const [nodePickFilters, setNodePickFilters] = useState(getNodePickerFilters(nodes, lastConnectStart, specJSON));
+const useNodePickFilters = ({ nodes, lastConnectStart, specGenerator, }) => {
+    const [nodePickFilters, setNodePickFilters] = useState(getNodePickerFilters(nodes, lastConnectStart, specGenerator));
     useEffect(() => {
-        setNodePickFilters(getNodePickerFilters(nodes, lastConnectStart, specJSON));
-    }, [nodes, lastConnectStart, specJSON]);
+        setNodePickFilters(getNodePickerFilters(nodes, lastConnectStart, specGenerator));
+    }, [nodes, lastConnectStart, specGenerator]);
     return nodePickFilters;
 };
-export const useFlowHandlers = ({ onEdgesChange, onNodesChange, nodes, specJSON }) => {
+export const useFlowHandlers = ({ onEdgesChange, onNodesChange, nodes, specGenerator, }) => {
     const [lastConnectStart, setLastConnectStart] = useState();
     const [nodePickerVisibility, setNodePickerVisibility] = useState();
     const onConnect = useCallback((connection) => {
@@ -55,12 +55,12 @@ export const useFlowHandlers = ({ onEdgesChange, onNodesChange, nodes, specJSON 
         const originNode = nodes.find((node) => node.id === lastConnectStart.nodeId);
         if (originNode === undefined)
             return;
-        if (!specJSON)
+        if (!specGenerator)
             return;
         onEdgesChange([
             {
                 type: 'add',
-                item: calculateNewEdge(originNode, nodeType, newNode.id, lastConnectStart, specJSON)
+                item: calculateNewEdge(originNode, nodeType, newNode.id, lastConnectStart, specGenerator)
             }
         ]);
     }, [
@@ -69,7 +69,7 @@ export const useFlowHandlers = ({ onEdgesChange, onNodesChange, nodes, specJSON 
         nodes,
         onEdgesChange,
         onNodesChange,
-        specJSON
+        specGenerator,
     ]);
     const handleStartConnect = useCallback((e, params) => {
         setLastConnectStart(params);
@@ -91,7 +91,7 @@ export const useFlowHandlers = ({ onEdgesChange, onNodesChange, nodes, specJSON 
     const nodePickFilters = useNodePickFilters({
         nodes,
         lastConnectStart,
-        specJSON
+        specGenerator,
     });
     return {
         onConnect,
