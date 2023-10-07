@@ -1,12 +1,13 @@
+import { GraphJSON } from '@behave-graph/core';
+import { Examples, Flow } from '@behave-graph/flow';
 import React from 'react';
+
 import Branch from '../../../../graphs/core/flow/Branch.json';
 import HelloWorld from '../../../../graphs/core/HelloWorld.json';
 import Polynomial from '../../../../graphs/core/logic/Polynomial.json';
 import Delay from '../../../../graphs/core/time/Delay.json';
 import SetGet from '../../../../graphs/core/variables/SetGet.json';
 import rawGraph from '../graph.json';
-import { GraphJSON } from '@behave-graph/core';
-import { Examples, Flow } from '@behave-graph/flow';
 import { useRegistry } from '../hooks/useRegistry.js';
 
 const graph = rawGraph as unknown as GraphJSON;

@@ -1,20 +1,22 @@
-import { NodeSpecJSON, OutputSocketSpecJSON } from '@behave-graph/core';
+import { OutputSocketSpecJSON } from '@behave-graph/core';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cx from 'classnames';
 import React from 'react';
 import { Connection, Handle, Position, useReactFlow } from 'reactflow';
 
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { colors, valueTypeColorMap } from '../util/colors.js';
 import { isValidConnection } from '../util/isValidConnection.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export type OutputSocketProps = {
   connected: boolean;
-  specJSON: NodeSpecJSON[];
+  specGenerator: NodeSpecGenerator;
 } & OutputSocketSpecJSON;
 
 export default function OutputSocket({
-  specJSON,
+  specGenerator,
   connected,
   valueType,
   name
@@ -47,7 +49,7 @@ export default function OutputSocket({
         position={Position.Right}
         className={cx(borderColor, connected ? backgroundColor : 'bg-gray-800')}
         isValidConnection={(connection: Connection) =>
-          isValidConnection(connection, instance, specJSON)
+          isValidConnection(connection, instance, specGenerator)
         }
       />
     </div>
