@@ -75,6 +75,14 @@ export function writeNodeSpecToJSON(
     nodeSpecJSON.outputs.push(socketSpecJSON);
   });
 
+  Object.entries(node.description.configuration).forEach(([ configName, configSpec ]) => {
+    nodeSpecJSON.configuration.push({
+      name: configName,
+      valueType: configSpec.valueType,
+      defaultValue: configSpec.defaultValue
+    });
+  });
+
   return nodeSpecJSON;
 }
 

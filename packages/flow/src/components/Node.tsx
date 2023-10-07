@@ -6,11 +6,15 @@ import {
   useChangeNodeConfig,
   useChangeNodeData
 } from '../hooks/useChangeNodeData.js';
+import { useAddNodeSocket } from '../hooks/useAddNodeSocket.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { isHandleConnected } from '../util/isHandleConnected.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+
 import InputSocket from './InputSocket.js';
 import NodeContainer from './NodeContainer.js';
 import OutputSocket from './OutputSocket.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 type NodeProps = FlowNodeProps & {
   spec: NodeSpecJSON;
@@ -39,15 +43,21 @@ export const Node: React.FC<NodeProps> = ({
   const handleConfigChange = useChangeNodeConfig(id);
 
   const pairs = getPairs(spec.inputs, spec.outputs);
-  const configuration = spec.configuration;
 
-  console.log(
-    'DEBUG node',
-    spec.label,
-    configuration,
-    data.configuration,
-    Object.entries(configuration)
+  const canAddInputs = spec.configuration.some(
+    (config) => config.name === 'numInputs' && config.valueType === 'number'
   );
+  const canAddOutputs = spec.configuration.some(
+    (config) => config.name === 'numOutputs' && config.valueType === 'number'
+  );
+
+  let handleAddNodeSocket;
+  if (canAddInputs) {
+    handleAddNodeSocket = useAddNodeSocket(id, 'inputs');
+  } else if (canAddOutputs) {
+    handleAddNodeSocket = useAddNodeSocket(id, 'outputs');
+  }
+
   return (
     <NodeContainer
       title={spec.label}
@@ -78,29 +88,17 @@ export const Node: React.FC<NodeProps> = ({
           )}
         </div>
       ))}
-      {Object.keys(configuration).length > 0 &&
-        Object.entries(configuration).map(([name, config], ix) => (
-          <div
-            key={ix}
-            className="flex flex-row justify-between gap-8 relative px-2"
-            // className={styles.container}
+      {handleAddNodeSocket && (
+        <div className="flex flex-row self-center">
+          <button
+            style={{ backgroundColor: 'transparent' }}
+            onClick={handleAddNodeSocket}
           >
-            {config && (
-              <InputSocket
-                {...config}
-                name={name}
-                defaultValue={config.defaultValue}
-                specGenerator={specGenerator}
-                value={data.configuration[name]}
-                onChange={(name, value) => {
-                  console.log('DEBUG changed value to ', value);
-                  handleConfigChange(name, value);
-                }}
-                connected={isHandleConnected(edges, id, name, 'target')}
-              />
-            )}
-          </div>
-        ))}
+            <FontAwesomeIcon icon={faCirclePlus} color="#ffffff" />
+            {' Add socket'}
+          </button>
+        </div>
+      )}
     </NodeContainer>
   );
 };
