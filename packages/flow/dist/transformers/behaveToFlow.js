@@ -14,9 +14,17 @@ export const behaveToFlow = (graph) => {
                     ? Number(nodeJSON.metadata?.positionY)
                     : 0
             },
-            data: {}
+            data: {
+                configuration: {},
+                values: {}
+            }
         };
         nodes.push(node);
+        if (nodeJSON.configuration) {
+            for (const [inputKey, input] of Object.entries(nodeJSON.configuration)) {
+                node.data.configuration[inputKey] = input;
+            }
+        }
         if (nodeJSON.parameters) {
             for (const [inputKey, input] of Object.entries(nodeJSON.parameters)) {
                 if ('link' in input && input.link !== undefined) {
@@ -29,7 +37,7 @@ export const behaveToFlow = (graph) => {
                     });
                 }
                 if ('value' in input) {
-                    node.data[inputKey] = input.value;
+                    node.data.values[inputKey] = input.value;
                 }
             }
         }

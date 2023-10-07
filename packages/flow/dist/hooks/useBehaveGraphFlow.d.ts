@@ -1,4 +1,5 @@
-import { GraphJSON, NodeSpecJSON } from '@behave-graph/core';
+import { GraphJSON } from '@behave-graph/core';
+import { NodeSpecGenerator } from './useNodeSpecGenerator.js';
 export declare const fetchBehaviorGraphJson: (url: string) => Promise<GraphJSON>;
 /**
  * Hook that returns the nodes and edges for react-flow, and the graphJson for the behave-graph.
@@ -7,9 +8,9 @@ export declare const fetchBehaviorGraphJson: (url: string) => Promise<GraphJSON>
  * @param param0
  * @returns
  */
-export declare const useBehaveGraphFlow: ({ initialGraphJson, specJson }: {
+export declare const useBehaveGraphFlow: ({ initialGraphJson, specGenerator }: {
     initialGraphJson: GraphJSON;
-    specJson: NodeSpecJSON[] | undefined;
+    specGenerator: NodeSpecGenerator | undefined;
 }) => {
     nodes: import("reactflow").Node<any, string | undefined>[];
     edges: import("reactflow").Edge<any>[];

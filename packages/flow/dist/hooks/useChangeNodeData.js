@@ -10,7 +10,10 @@ export const useChangeNodeData = (id) => {
                 ...n,
                 data: {
                     ...n.data,
-                    [key]: value
+                    values: {
+                        ...n.data.values,
+                        [key]: value
+                    }
                 }
             };
         }));

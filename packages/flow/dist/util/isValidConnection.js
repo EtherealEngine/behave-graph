@@ -1,6 +1,6 @@
 import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
 import { isHandleConnected } from './isHandleConnected.js';
-export const isValidConnection = (connection, instance, specJSON) => {
+export const isValidConnection = (connection, instance, specGenerator) => {
     if (connection.source === null || connection.target === null)
         return false;
     const sourceNode = instance.getNode(connection.source);
@@ -8,9 +8,9 @@ export const isValidConnection = (connection, instance, specJSON) => {
     const edges = instance.getEdges();
     if (sourceNode === undefined || targetNode === undefined)
         return false;
-    const sourceSockets = getSocketsByNodeTypeAndHandleType(specJSON, sourceNode.type, 'source');
+    const sourceSockets = getSocketsByNodeTypeAndHandleType(specGenerator, sourceNode.type, sourceNode.data.configuration, 'source');
     const sourceSocket = sourceSockets?.find((socket) => socket.name === connection.sourceHandle);
-    const targetSockets = getSocketsByNodeTypeAndHandleType(specJSON, targetNode.type, 'target');
+    const targetSockets = getSocketsByNodeTypeAndHandleType(specGenerator, targetNode.type, targetNode.data.configuration, 'target');
     const targetSocket = targetSockets?.find((socket) => socket.name === connection.targetHandle);
     if (sourceSocket === undefined || targetSocket === undefined)
         return false;

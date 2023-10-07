@@ -1,7 +1,7 @@
-export const getSocketsByNodeTypeAndHandleType = (nodes, nodeType, handleType) => {
-    const nodeSpec = nodes.find((node) => node.type === nodeType);
-    if (nodeSpec === undefined)
-        return;
+export const getSocketsByNodeTypeAndHandleType = (specGenerator, nodeType, nodeConfiguration, handleType) => {
+    if (nodeType === undefined)
+        return [];
+    const nodeSpec = specGenerator.getNodeSpec(nodeType, nodeConfiguration);
     return handleType === 'source' ? nodeSpec.outputs : nodeSpec.inputs;
 };
 //# sourceMappingURL=getSocketsByNodeTypeAndHandleType.js.map

@@ -3,7 +3,8 @@ import { useReactFlow } from 'reactflow';
 
 export const useAddNodeSocket = (
   id: string,
-  type: 'inputs' | 'outputs' | 'both'
+  type: 'inputs' | 'outputs' | 'both',
+  defaultValue: number
 ) => {
   const instance = useReactFlow();
 
@@ -11,26 +12,34 @@ export const useAddNodeSocket = (
     instance.setNodes((nodes) =>
       nodes.map((n) => {
         if (n.id !== id) return n;
-
         let newConfiguration;
         switch (type) {
           case 'inputs':
             newConfiguration = {
-              numInputs: (n.data.configuration?.numInputs ?? 0) + 1
+              numInputs: (n.data.configuration?.numInputs ?? defaultValue) + 1
             };
             break;
 
           case 'outputs':
             newConfiguration = {
-              numOutputs: (n.data.configuration?.numOutputs ?? 0) + 1
+              numOutputs: (n.data.configuration?.numOutputs ?? defaultValue) + 1
             };
             break;
           case 'both':
             newConfiguration = {
-              numCases: (n.data.configuration?.numCases ?? 0) + 1
+              numCases: (n.data.configuration?.numCases ?? defaultValue) + 1
             };
             break;
         }
+        console.log(
+          'DEBUG in callback ',
+          n.data.configuration,
+          newConfiguration,
+          {
+            ...n.data.configuration,
+            ...newConfiguration
+          }
+        );
         return {
           ...n,
           data: {

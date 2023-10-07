@@ -1,3 +1,4 @@
-import { GraphJSON, NodeSpecJSON } from '@behave-graph/core';
+import { GraphJSON } from '@behave-graph/core';
 import { Edge, Node } from 'reactflow';
-export declare const flowToBehave: (nodes: Node[], edges: Edge[], nodeSpecJSON: NodeSpecJSON[]) => GraphJSON;
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
+export declare const flowToBehave: (nodes: Node[], edges: Edge[], specGenerator: NodeSpecGenerator) => GraphJSON;

@@ -1,9 +1,9 @@
-import { NodeSpecJSON } from '@behave-graph/core';
 import { MouseEvent as ReactMouseEvent } from 'react';
 import { Connection, Node, OnConnectStartParams, XYPosition } from 'reactflow';
 import { useBehaveGraphFlow } from './useBehaveGraphFlow.js';
+import { NodeSpecGenerator } from './useNodeSpecGenerator.js';
 type BehaveGraphFlow = ReturnType<typeof useBehaveGraphFlow>;
-export declare const useFlowHandlers: ({ onEdgesChange, onNodesChange, nodes, specJSON }: Pick<{
+export declare const useFlowHandlers: ({ onEdgesChange, onNodesChange, nodes, specGenerator }: Pick<{
     nodes: Node<any, string | undefined>[];
     edges: import("reactflow").Edge<any>[];
     onEdgesChange: (changes: import("reactflow").EdgeChange[]) => void;
@@ -13,7 +13,7 @@ export declare const useFlowHandlers: ({ onEdgesChange, onNodesChange, nodes, sp
     nodeTypes: import("reactflow").NodeTypes | undefined;
 }, "onNodesChange" | "onEdgesChange"> & {
     nodes: Node[];
-    specJSON: NodeSpecJSON[] | undefined;
+    specGenerator: NodeSpecGenerator | undefined;
 }) => {
     onConnect: (connection: Connection) => void;
     handleStartConnect: (e: ReactMouseEvent, params: OnConnectStartParams) => void;

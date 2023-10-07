@@ -1,6 +1,6 @@
-import { NodeSpecJSON } from '@behave-graph/core';
 import { Node, OnConnectStartParams } from 'reactflow';
-export declare const calculateNewEdge: (originNode: Node, destinationNodeType: string, destinationNodeId: string, connection: OnConnectStartParams, specJSON: NodeSpecJSON[]) => {
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
+export declare const calculateNewEdge: (originNode: Node, destinationNodeType: string, destinationNodeId: string, connection: OnConnectStartParams, specGenerator: NodeSpecGenerator) => {
     id: string;
     source: string;
     sourceHandle: string | null;

@@ -1,10 +1,10 @@
 const isNullish = (value) => value === undefined || value === null;
-export const flowToBehave = (nodes, edges, nodeSpecJSON) => {
+export const flowToBehave = (nodes, edges, specGenerator) => {
     const graph = { nodes: [], variables: [], customEvents: [] };
     nodes.forEach((node) => {
         if (node.type === undefined)
             return;
-        const nodeSpec = nodeSpecJSON.find((nodeSpec) => nodeSpec.type === node.type);
+        const nodeSpec = specGenerator.getNodeSpec(node.type, node.data.configuration);
         if (nodeSpec === undefined)
             return;
         const behaveNode = {
@@ -15,7 +15,13 @@ export const flowToBehave = (nodes, edges, nodeSpecJSON) => {
                 positionY: String(node.position.y)
             }
         };
-        Object.entries(node.data).forEach(([key, value]) => {
+        Object.entries(node.data.configuration).forEach(([key, value]) => {
+            if (behaveNode.configuration === undefined) {
+                behaveNode.configuration = {};
+            }
+            behaveNode.configuration[key] = value;
+        });
+        Object.entries(node.data.values).forEach(([key, value]) => {
             if (behaveNode.parameters === undefined) {
                 behaveNode.parameters = {};
             }

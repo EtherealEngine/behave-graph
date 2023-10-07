@@ -2,10 +2,7 @@ import { NodeSpecJSON, createNode } from '@behave-graph/core';
 import React from 'react';
 import { NodeProps as FlowNodeProps, useEdges } from 'reactflow';
 
-import {
-  useChangeNodeConfig,
-  useChangeNodeData
-} from '../hooks/useChangeNodeData.js';
+import { useChangeNodeData } from '../hooks/useChangeNodeData.js';
 import { useAddNodeSocket } from '../hooks/useAddNodeSocket.js';
 import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { isHandleConnected } from '../util/isHandleConnected.js';
@@ -40,27 +37,38 @@ export const Node: React.FC<NodeProps> = ({
 }: NodeProps) => {
   const edges = useEdges();
   const handleChange = useChangeNodeData(id);
-  const handleConfigChange = useChangeNodeConfig(id);
 
   const pairs = getPairs(spec.inputs, spec.outputs);
 
-  const canAddInputs = spec.configuration.some(
+  const canAddInputs = spec.configuration.find(
     (config) => config.name === 'numInputs' && config.valueType === 'number'
   );
-  const canAddOutputs = spec.configuration.some(
+  const canAddOutputs = spec.configuration.find(
     (config) => config.name === 'numOutputs' && config.valueType === 'number'
   );
-  const canAddBoth = spec.configuration.some(
+  const canAddBoth = spec.configuration.find(
     (config) => config.name === 'numCases' && config.valueType === 'number'
   );
 
   let handleAddNodeSocket;
   if (canAddInputs) {
-    handleAddNodeSocket = useAddNodeSocket(id, 'inputs');
+    handleAddNodeSocket = useAddNodeSocket(
+      id,
+      'inputs',
+      canAddInputs.defaultValue as number
+    );
   } else if (canAddOutputs) {
-    handleAddNodeSocket = useAddNodeSocket(id, 'outputs');
+    handleAddNodeSocket = useAddNodeSocket(
+      id,
+      'outputs',
+      canAddOutputs.defaultValue as number
+    );
   } else if (canAddBoth) {
-    handleAddNodeSocket = useAddNodeSocket(id, 'both');
+    handleAddNodeSocket = useAddNodeSocket(
+      id,
+      'both',
+      canAddBoth.defaultValue as number
+    );
   }
 
   return (

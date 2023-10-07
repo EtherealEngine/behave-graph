@@ -1,10 +1,11 @@
-import { InputSocketSpecJSON, NodeSpecJSON } from '@behave-graph/core';
+import { InputSocketSpecJSON } from '@behave-graph/core';
 import React from 'react';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 export type InputSocketProps = {
     connected: boolean;
     value: any | undefined;
     onChange: (key: string, value: any) => void;
-    specJSON: NodeSpecJSON[];
+    specGenerator: NodeSpecGenerator;
 } & InputSocketSpecJSON;
 declare const InputSocket: React.FC<InputSocketProps>;
 export default InputSocket;
