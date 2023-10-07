@@ -1,4 +1,5 @@
 import { NodeCategory } from '../../Nodes/NodeDefinitions.js';
+import { NodeConfigurationDescription } from '../../Nodes/Registry/NodeDescription.js';
 import { IRegistry } from '../../Registry.js';
 import { Choices } from '../../Sockets/Socket.js';
 import { createNode, makeGraphApi } from '../Graph.js';
@@ -36,14 +37,26 @@ export function writeNodeSpecToJSON(
     nodeConfiguration: configuration
   });
   const nodeDefinition: any = registry.nodes[nodeTypeName];
+
   const nodeSpecJSON: NodeSpecJSON = {
     type: nodeTypeName,
     category: node.description.category as NodeCategory,
     label: node.description.label,
     inputs: [],
     outputs: [],
-    configuration: nodeDefinition.configuration ?? []
+    configuration: []
   };
+  if (nodeDefinition.configuration) {
+    Object.entries(
+      nodeDefinition.configuration as NodeConfigurationDescription
+    ).forEach(([configName, configSpec]) => {
+      nodeSpecJSON.configuration.push({
+        name: configName,
+        valueType: configSpec.valueType,
+        defaultValue: configSpec.defaultValue
+      });
+    });
+  }
 
   node.inputs.forEach((inputSocket) => {
     const valueType =
@@ -74,15 +87,21 @@ export function writeNodeSpecToJSON(
     };
     nodeSpecJSON.outputs.push(socketSpecJSON);
   });
+  console.log('DEBUG', [nodeDefinition.configuration]);
 
-  Object.entries(node.description.configuration).forEach(([ configName, configSpec ]) => {
-    nodeSpecJSON.configuration.push({
-      name: configName,
-      valueType: configSpec.valueType,
-      defaultValue: configSpec.defaultValue
-    });
-  });
+  console.log('DEBUG', node.description.configuration);
 
+  Object.entries(node.description.configuration).forEach(
+    ([configName, configSpec]) => {
+      nodeSpecJSON.configuration.push({
+        name: configName,
+        valueType: configSpec.valueType,
+        defaultValue: configSpec.defaultValue
+      });
+    }
+  );
+
+  console.log('DEBUG', nodeSpecJSON.configuration);
   return nodeSpecJSON;
 }
 

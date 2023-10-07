@@ -50,12 +50,17 @@ export const Node: React.FC<NodeProps> = ({
   const canAddOutputs = spec.configuration.some(
     (config) => config.name === 'numOutputs' && config.valueType === 'number'
   );
+  const canAddBoth = spec.configuration.some(
+    (config) => config.name === 'numCases' && config.valueType === 'number'
+  );
 
   let handleAddNodeSocket;
   if (canAddInputs) {
     handleAddNodeSocket = useAddNodeSocket(id, 'inputs');
   } else if (canAddOutputs) {
     handleAddNodeSocket = useAddNodeSocket(id, 'outputs');
+  } else if (canAddBoth) {
+    handleAddNodeSocket = useAddNodeSocket(id, 'both');
   }
 
   return (
