@@ -5,9 +5,7 @@ import { flowToBehave } from '../transformers/flowToBehave.js';
 import { autoLayout } from '../util/autoLayout.js';
 import { hasPositionMetaData } from '../util/hasPositionMetaData.js';
 import { useCustomNodeTypes } from './useCustomNodeTypes.js';
-export const fetchBehaviorGraphJson = async (url) => 
-// eslint-disable-next-line unicorn/no-await-expression-member
-(await (await fetch(url)).json());
+export const fetchBehaviorGraphJson = async (url) => (await (await fetch(url)).json());
 /**
  * Hook that returns the nodes and edges for react-flow, and the graphJson for the behave-graph.
  * If nodes or edges are changes, the graph json is updated automatically.

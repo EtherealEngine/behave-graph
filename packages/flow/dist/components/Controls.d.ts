@@ -1,7 +1,7 @@
 import { GraphJSON } from '@behave-graph/core';
 import React from 'react';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { Examples } from './modals/LoadModal.js';
+import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 export type CustomControlsProps = {
     playing: boolean;
     togglePlay: () => void;
