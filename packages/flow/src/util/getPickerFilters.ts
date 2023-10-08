@@ -3,7 +3,6 @@ import { Node, OnConnectStartParams } from 'reactflow';
 import { NodePickerFilters } from '../components/NodePicker.js';
 import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
-import { NodeSpecGenerator } from '../hooks/useNodeSpecGenerator.js';
 
 export const getNodePickerFilters = (
   nodes: Node[],

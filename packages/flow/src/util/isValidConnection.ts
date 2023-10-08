@@ -21,7 +21,7 @@ export const isValidConnection = (
     specGenerator,
     sourceNode.type,
     sourceNode.data.configuration,
-    'source',
+    'source'
   );
 
   const sourceSocket = sourceSockets?.find(
@@ -32,11 +32,7 @@ export const isValidConnection = (
     specGenerator,
     targetNode.type,
     targetNode.data.configuration,
-<<<<<<< HEAD
     'target'
-=======
-    'target',
->>>>>>> 3d2383d23869871bfea0f78f2fc61aa55427d263
   );
 
   const targetSocket = targetSockets?.find(

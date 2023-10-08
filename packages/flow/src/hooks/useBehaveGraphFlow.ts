@@ -10,7 +10,6 @@ import { useCustomNodeTypes } from './useCustomNodeTypes.js';
 import { NodeSpecGenerator } from './useNodeSpecGenerator.js';
 
 export const fetchBehaviorGraphJson = async (url: string) =>
-  // eslint-disable-next-line unicorn/no-await-expression-member
   (await (await fetch(url)).json()) as GraphJSON;
 
 /**
