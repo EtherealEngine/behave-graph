@@ -63,8 +63,6 @@ export function writeNodeSpecToJSON(registry, nodeTypeName, configuration) {
         };
         nodeSpecJSON.outputs.push(socketSpecJSON);
     });
-    console.log('DEBUG', [nodeDefinition.configuration]);
-    console.log('DEBUG', node.description.configuration);
     Object.entries(node.description.configuration).forEach(([configName, configSpec]) => {
         nodeSpecJSON.configuration.push({
             name: configName,
@@ -72,7 +70,6 @@ export function writeNodeSpecToJSON(registry, nodeTypeName, configuration) {
             defaultValue: configSpec.defaultValue
         });
     });
-    console.log('DEBUG', nodeSpecJSON.configuration);
     return nodeSpecJSON;
 }
 // create JSON specs for all nodes with empty configuration
