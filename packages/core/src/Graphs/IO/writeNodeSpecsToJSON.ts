@@ -87,9 +87,6 @@ export function writeNodeSpecToJSON(
     };
     nodeSpecJSON.outputs.push(socketSpecJSON);
   });
-  console.log('DEBUG', [nodeDefinition.configuration]);
-
-  console.log('DEBUG', node.description.configuration);
 
   Object.entries(node.description.configuration).forEach(
     ([configName, configSpec]) => {
@@ -100,8 +97,6 @@ export function writeNodeSpecToJSON(
       });
     }
   );
-
-  console.log('DEBUG', nodeSpecJSON.configuration);
   return nodeSpecJSON;
 }
 
