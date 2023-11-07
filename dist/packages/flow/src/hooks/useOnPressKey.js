@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useOnPressKey = void 0;
-const react_1 = require("react");
-const useOnPressKey = (key, callback) => {
-    (0, react_1.useEffect)(() => {
+import { useEffect } from 'react';
+export const useOnPressKey = (key, callback) => {
+    useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.code === key) {
                 callback(e);
@@ -13,4 +10,4 @@ const useOnPressKey = (key, callback) => {
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, [key, callback]);
 };
-exports.useOnPressKey = useOnPressKey;
+//# sourceMappingURL=useOnPressKey.js.map

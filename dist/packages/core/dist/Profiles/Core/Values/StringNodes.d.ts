@@ -1,0 +1,5 @@
+export const Constant: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Concat: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Includes: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Length: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Equal: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;

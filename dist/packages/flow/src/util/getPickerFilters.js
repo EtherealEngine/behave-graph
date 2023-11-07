@@ -1,16 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNodePickerFilters = void 0;
-const getNodeSpecJSON_1 = require("./getNodeSpecJSON");
-const getSocketsByNodeTypeAndHandleType_1 = require("./getSocketsByNodeTypeAndHandleType");
-const specJSON = (0, getNodeSpecJSON_1.getNodeSpecJSON)();
-const getNodePickerFilters = (nodes, params) => {
+import { getSocketsByNodeTypeAndHandleType } from './getSocketsByNodeTypeAndHandleType.js';
+export const getNodePickerFilters = (nodes, params, specGenerator) => {
     if (params === undefined)
         return;
     const originNode = nodes.find((node) => node.id === params.nodeId);
     if (originNode === undefined)
         return;
-    const sockets = (0, getSocketsByNodeTypeAndHandleType_1.getSocketsByNodeTypeAndHandleType)(specJSON, originNode.type, params.handleType);
+    const sockets = specGenerator
+        ? getSocketsByNodeTypeAndHandleType(specGenerator, originNode.type, originNode.data.configuration, params.handleType)
+        : undefined;
     const socket = sockets?.find((socket) => socket.name === params.handleId);
     if (socket === undefined)
         return;
@@ -19,4 +16,4 @@ const getNodePickerFilters = (nodes, params) => {
         valueType: socket.valueType
     };
 };
-exports.getNodePickerFilters = getNodePickerFilters;
+//# sourceMappingURL=getPickerFilters.js.map

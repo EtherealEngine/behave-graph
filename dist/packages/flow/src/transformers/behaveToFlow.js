@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.behaveToFlow = void 0;
-const uuid_1 = require("uuid");
-const behaveToFlow = (graph) => {
+import { v4 as uuidv4 } from 'uuid';
+export const behaveToFlow = (graph) => {
     const nodes = [];
     const edges = [];
     graph.nodes?.forEach((nodeJSON) => {
@@ -17,14 +14,22 @@ const behaveToFlow = (graph) => {
                     ? Number(nodeJSON.metadata?.positionY)
                     : 0
             },
-            data: {}
+            data: {
+                configuration: {},
+                values: {}
+            }
         };
         nodes.push(node);
+        if (nodeJSON.configuration) {
+            for (const [inputKey, input] of Object.entries(nodeJSON.configuration)) {
+                node.data.configuration[inputKey] = input;
+            }
+        }
         if (nodeJSON.parameters) {
             for (const [inputKey, input] of Object.entries(nodeJSON.parameters)) {
                 if ('link' in input && input.link !== undefined) {
                     edges.push({
-                        id: (0, uuid_1.v4)(),
+                        id: uuidv4(),
                         source: input.link.nodeId,
                         sourceHandle: input.link.socket,
                         target: nodeJSON.id,
@@ -32,14 +37,14 @@ const behaveToFlow = (graph) => {
                     });
                 }
                 if ('value' in input) {
-                    node.data[inputKey] = input.value;
+                    node.data.values[inputKey] = input.value;
                 }
             }
         }
         if (nodeJSON.flows) {
             for (const [inputKey, link] of Object.entries(nodeJSON.flows)) {
                 edges.push({
-                    id: (0, uuid_1.v4)(),
+                    id: uuidv4(),
                     source: nodeJSON.id,
                     sourceHandle: inputKey,
                     target: link.nodeId,
@@ -50,4 +55,4 @@ const behaveToFlow = (graph) => {
     });
     return [nodes, edges];
 };
-exports.behaveToFlow = behaveToFlow;
+//# sourceMappingURL=behaveToFlow.js.map

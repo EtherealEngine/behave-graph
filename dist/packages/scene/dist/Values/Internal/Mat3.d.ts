@@ -1,0 +1,34 @@
+export function mat3SetColumn3(m: any, columnIndex: any, column: any, result?: Mat3): Mat3;
+export function mat3SetRow3(m: any, rowIndex: any, row: any, result?: Mat3): Mat3;
+export function column3ToMat3(a: any, b: any, c: any, result?: Mat3): Mat3;
+export function mat3Equals(a: any, b: any, tolerance?: number): boolean;
+export function mat3Add(a: any, b: any, result?: Mat3): Mat3;
+export function mat3Subtract(a: any, b: any, result?: Mat3): Mat3;
+export function mat3MultiplyByScalar(a: any, b: any, result?: Mat3): Mat3;
+export function mat3Negate(a: any, result?: Mat3): Mat3;
+export function mat3Multiply(a: any, b: any, result?: Mat3): Mat3;
+export function mat3Determinant(m: any): number;
+export function mat3Transpose(m: any, result?: Mat3): Mat3;
+export function mat3Inverse(m: any, result?: Mat3): Mat3;
+export function mat3Mix(a: any, b: any, t: any, result?: Mat3): Mat3;
+export function mat3FromArray(array: any, offset?: number, result?: Mat3): Mat3;
+export function mat3ToArray(a: any, array: any, offset?: number): void;
+export function mat3ToString(a: any): string;
+export function mat3Parse(text: any, result?: Mat3): Mat3;
+export function eulerToMat3(euler: any, result?: Mat3): Mat3;
+export function quatToMat3(q: any, result?: Mat3): Mat3;
+export function scale2ToMat3(s: any, result?: Mat3): Mat3;
+export function mat3ToScale2(m: any, result?: Vec2): Vec2;
+export function translation2ToMat3(t: any, result?: Mat3): Mat3;
+export function mat3ToTranslation2(m: any, result?: Vec2): Vec2;
+export function scale3ToMat3(s: any, result?: Mat3): Mat3;
+export function mat3ToScale3(m: any, result?: Vec3): Vec3;
+export function mat4ToMat3(a: any, result?: Mat3): Mat3;
+export class Mat3 {
+    constructor(elements?: number[]);
+    elements: number[];
+    clone(result?: Mat3): Mat3;
+    set(elements: any): Mat3;
+}
+import { Vec2 } from './Vec2.js';
+import { Vec3 } from './Vec3.js';

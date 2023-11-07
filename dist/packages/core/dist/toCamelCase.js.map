@@ -1,0 +1,1 @@
+{"version":3,"file":"toCamelCase.js","sourceRoot":"","sources":["../../../../packages/core/dist/toCamelCase.js"],"names":[],"mappings":"AAAA,MAAM,UAAU,WAAW,CAAC,IAAI;IAC5B,IAAI,IAAI,CAAC,MAAM,GAAG,CAAC,EAAE;QACjB,OAAO,IAAI,CAAC,KAAK,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,iBAAiB,EAAE,GAAG,IAAI,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC;KAC/D;IACD,OAAO,IAAI,CAAC;AAChB,CAAC;AACD,uCAAuC"}

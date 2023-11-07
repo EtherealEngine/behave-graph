@@ -1,0 +1,1 @@
+{"version":3,"file":"sequence.js","sourceRoot":"","sources":["../../../../packages/core/dist/sequence.js"],"names":[],"mappings":"AAAA,8BAA8B;AAC9B,MAAM,SAAS,CAAC,CAAC,QAAQ,CAAC,KAAK,EAAE,GAAG,EAAE,IAAI,GAAG,CAAC;IAC1C,IAAI,KAAK,GAAG,KAAK,CAAC;IAClB,OAAO,KAAK,GAAG,GAAG,EAAE;QAChB,MAAM,KAAK,CAAC;QACZ,KAAK,IAAI,IAAI,CAAC;KACjB;IACD,OAAO;AACX,CAAC;AACD,oCAAoC"}

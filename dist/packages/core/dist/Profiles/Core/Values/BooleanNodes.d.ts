@@ -1,0 +1,7 @@
+export const Constant: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const And: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Or: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Not: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const ToFloat: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const Equal: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;
+export const toInteger: import("../../../index.js").IFunctionNodeDefinition<() => import("../../../index.js").SocketsList, () => import("../../../index.js").SocketsList, import("../../../index.js").NodeConfigurationDescription>;

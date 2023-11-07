@@ -1,15 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.flowToBehave = void 0;
-const getNodeSpecJSON_1 = require("../util/getNodeSpecJSON");
-const nodeSpecJSON = (0, getNodeSpecJSON_1.getNodeSpecJSON)();
 const isNullish = (value) => value === undefined || value === null;
-const flowToBehave = (nodes, edges) => {
+export const flowToBehave = (nodes, edges, specGenerator) => {
     const graph = { nodes: [], variables: [], customEvents: [] };
     nodes.forEach((node) => {
         if (node.type === undefined)
             return;
-        const nodeSpec = nodeSpecJSON.find((nodeSpec) => nodeSpec.type === node.type);
+        const nodeSpec = specGenerator.getNodeSpec(node.type, node.data.configuration);
         if (nodeSpec === undefined)
             return;
         const behaveNode = {
@@ -20,7 +15,13 @@ const flowToBehave = (nodes, edges) => {
                 positionY: String(node.position.y)
             }
         };
-        Object.entries(node.data).forEach(([key, value]) => {
+        Object.entries(node.data.configuration).forEach(([key, value]) => {
+            if (behaveNode.configuration === undefined) {
+                behaveNode.configuration = {};
+            }
+            behaveNode.configuration[key] = value;
+        });
+        Object.entries(node.data.values).forEach(([key, value]) => {
             if (behaveNode.parameters === undefined) {
                 behaveNode.parameters = {};
             }
@@ -31,6 +32,7 @@ const flowToBehave = (nodes, edges) => {
             .forEach((edge) => {
             const inputSpec = nodeSpec.inputs.find((input) => input.name === edge.targetHandle);
             if (inputSpec && inputSpec.valueType === 'flow') {
+                // skip flows
                 return;
             }
             if (behaveNode.parameters === undefined) {
@@ -40,6 +42,7 @@ const flowToBehave = (nodes, edges) => {
                 return;
             if (isNullish(edge.sourceHandle))
                 return;
+            // TODO: some of these are flow outputs, and should be saved differently.  -Ben, Oct 11, 2022
             behaveNode.parameters[edge.targetHandle] = {
                 link: { nodeId: edge.source, socket: edge.sourceHandle }
             };
@@ -58,13 +61,15 @@ const flowToBehave = (nodes, edges) => {
                 return;
             if (isNullish(edge.sourceHandle))
                 return;
+            // TODO: some of these are flow outputs, and should be saved differently.  -Ben, Oct 11, 2022
             behaveNode.flows[edge.sourceHandle] = {
                 nodeId: edge.target,
                 socket: edge.targetHandle
             };
         });
+        // TODO filter out any orphan nodes at this point, to avoid errors further down inside behave-graph
         graph.nodes?.push(behaveNode);
     });
     return graph;
 };
-exports.flowToBehave = flowToBehave;
+//# sourceMappingURL=flowToBehave.js.map

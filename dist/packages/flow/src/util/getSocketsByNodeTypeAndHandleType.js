@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSocketsByNodeTypeAndHandleType = void 0;
-const getSocketsByNodeTypeAndHandleType = (nodes, nodeType, handleType) => {
-    const nodeSpec = nodes.find((node) => node.type === nodeType);
-    if (nodeSpec === undefined)
-        return;
+export const getSocketsByNodeTypeAndHandleType = (specGenerator, nodeType, nodeConfiguration, handleType) => {
+    if (nodeType === undefined)
+        return [];
+    const nodeSpec = specGenerator.getNodeSpec(nodeType, nodeConfiguration);
     return handleType === 'source' ? nodeSpec.outputs : nodeSpec.inputs;
 };
-exports.getSocketsByNodeTypeAndHandleType = getSocketsByNodeTypeAndHandleType;
+//# sourceMappingURL=getSocketsByNodeTypeAndHandleType.js.map

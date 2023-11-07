@@ -1,0 +1,1 @@
+{"version":3,"file":"tailwind.config.js","sourceRoot":"","sources":["../../../apps/graph-editor/tailwind.config.js"],"names":[],"mappings":"AAAA,eAAe;IACb,OAAO,EAAE;QACP,qBAAqB;QACrB,gCAAgC;QAChC,mDAAmD;KACpD;IACD,KAAK,EAAE;QACL,MAAM,EAAE,EAAE;KACX;IACD,OAAO,EAAE;QACP;YACE,WAAW,EAAE,EAAE;SAChB;QACD;YACE,YAAY,EAAE,EAAE;SACjB;KACF;CACF,CAAC"}

@@ -1,16 +1,13 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Node = void 0;
-const jsx_runtime_1 = require("react/jsx-runtime");
-const reactflow_1 = require("reactflow");
-const InputSocket_1 = __importDefault(require("./InputSocket"));
-const NodeContainer_1 = __importDefault(require("./NodeContainer"));
-const OutputSocket_1 = __importDefault(require("./OutputSocket"));
-const useChangeNodeData_1 = require("../hooks/useChangeNodeData");
-const isHandleConnected_1 = require("../util/isHandleConnected");
+import React from 'react';
+import { useEdges } from 'reactflow';
+import { useChangeNodeData } from '../hooks/useChangeNodeData.js';
+import { useAddNodeSocket } from '../hooks/useAddNodeSocket.js';
+import { isHandleConnected } from '../util/isHandleConnected.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import InputSocket from './InputSocket.js';
+import NodeContainer from './NodeContainer.js';
+import OutputSocket from './OutputSocket.js';
 const getPairs = (arr1, arr2) => {
     const max = Math.max(arr1.length, arr2.length);
     const pairs = [];
@@ -20,10 +17,34 @@ const getPairs = (arr1, arr2) => {
     }
     return pairs;
 };
-const Node = ({ id, data, spec, selected }) => {
-    const edges = (0, reactflow_1.useEdges)();
-    const handleChange = (0, useChangeNodeData_1.useChangeNodeData)(id);
+export const Node = ({ id, data, spec, selected, specGenerator }) => {
+    const edges = useEdges();
+    const handleChange = useChangeNodeData(id);
     const pairs = getPairs(spec.inputs, spec.outputs);
-    return ((0, jsx_runtime_1.jsx)(NodeContainer_1.default, { title: spec.label, category: spec.category, selected: selected, children: pairs.map(([input, output], ix) => ((0, jsx_runtime_1.jsxs)("div", { className: "flex flex-row justify-between gap-8 relative px-2", children: [input && ((0, jsx_runtime_1.jsx)(InputSocket_1.default, { ...input, value: data[input.name] ?? input.defaultValue, onChange: handleChange, connected: (0, isHandleConnected_1.isHandleConnected)(edges, id, input.name, 'target') })), output && ((0, jsx_runtime_1.jsx)(OutputSocket_1.default, { ...output, connected: (0, isHandleConnected_1.isHandleConnected)(edges, id, output.name, 'source') }))] }, ix))) }));
+    const canAddInputs = spec.configuration.find((config) => config.name === 'numInputs' && config.valueType === 'number');
+    const canAddOutputs = spec.configuration.find((config) => config.name === 'numOutputs' && config.valueType === 'number');
+    const canAddBoth = spec.configuration.find((config) => config.name === 'numCases' && config.valueType === 'number');
+    let handleAddNodeSocket;
+    if (canAddInputs) {
+        handleAddNodeSocket = useAddNodeSocket(id, 'inputs', canAddInputs.defaultValue);
+    }
+    else if (canAddOutputs) {
+        handleAddNodeSocket = useAddNodeSocket(id, 'outputs', canAddOutputs.defaultValue);
+    }
+    else if (canAddBoth) {
+        handleAddNodeSocket = useAddNodeSocket(id, 'both', canAddBoth.defaultValue);
+    }
+    return (<NodeContainer title={spec.label} category={spec.category} selected={selected}>
+      {pairs.map(([input, output], ix) => (<div key={ix} className="flex flex-row justify-between gap-8 relative px-2">
+          {input && (<InputSocket {...input} specGenerator={specGenerator} value={data.values?.[input.name] ?? input.defaultValue} onChange={handleChange} connected={isHandleConnected(edges, id, input.name, 'target')}/>)}
+          {output && (<OutputSocket {...output} specGenerator={specGenerator} connected={isHandleConnected(edges, id, output.name, 'source')}/>)}
+        </div>))}
+      {handleAddNodeSocket && (<div className="flex flex-row self-center">
+          <button style={{ backgroundColor: 'transparent' }} onClick={handleAddNodeSocket}>
+            <FontAwesomeIcon icon={faCirclePlus} color="#ffffff"/>
+            {' Add socket'}
+          </button>
+        </div>)}
+    </NodeContainer>);
 };
-exports.Node = Node;
+//# sourceMappingURL=Node.js.map
