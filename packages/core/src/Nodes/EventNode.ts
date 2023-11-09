@@ -94,8 +94,10 @@ export class EventNodeInstance<TEventNodeDef extends IEventNodeDefinition>
       write: this.writeOutput,
       state: this.state,
       outputSocketKeys: this.outputSocketKeys,
-      commit: (outFlowname, fiberCompletedListener) =>
-        engine.commitToNewFiber(this, outFlowname, fiberCompletedListener),
+      commit: (outFlowname, fiberCompletedListener) => {
+        engine.commitToNewFiber(this, outFlowname, fiberCompletedListener);
+        engine.executeAllSync(1);
+      },
       configuration: this.configuration,
       graph: this.graph
     });

@@ -42,7 +42,7 @@ export const getStructValuesMap = memo(() => {
     const temp = Object.fromEntries(valueTypes.map((valueType) => [valueType.name, valueType]));
     return temp;
 });
-export const getSceneStringConversions = (values) => Object.keys(values).flatMap((valueTypeName) => getStringConversionsForValueType({ values, valueTypeName }));
+export const getStructStringConversions = (values) => Object.keys(values).flatMap((valueTypeName) => getStringConversionsForValueType({ values, valueTypeName }));
 export const getStructNodesMap = memo(() => {
     /*const structValueTypeNames = Object.keys({
       ...getStructValuesMap()
@@ -53,7 +53,7 @@ export const getStructNodesMap = memo(() => {
         ...getNodeDescriptions(ListNodes),
         //...SetSceneProperty(structValueTypeNames),
         //...GetSceneProperty(structValueTypeNames), //need imports from scene, not sure if we even want this
-        ...getSceneStringConversions(getStructValuesMap())
+        ...getStructStringConversions(getStructValuesMap())
     ];
     return Object.fromEntries(nodeDefinitions.map((nodeDefinition) => [
         nodeDefinition.typeName,

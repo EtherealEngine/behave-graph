@@ -1,4 +1,6 @@
 import {
+  Assert,
+  makeFlowNodeDefinition,
   makeFunctionNodeDefinition,
   makeInNOutFunctionDesc,
   NodeCategory,
@@ -38,7 +40,7 @@ export const Concat = makeFunctionNodeDefinition({
   in: (_) => {
     const sockets: SocketsList = [];
 
-    const componentName = (index: number) => {
+    const list = (index: number) => {
       return {
         key: `list${index}`,
         valueType: 'list'
@@ -49,7 +51,7 @@ export const Concat = makeFunctionNodeDefinition({
       1,
       (_.numInputs ?? Concat.configuration?.numInputs.defaultValue) + 1
     )) {
-      sockets.push({ ...componentName(index) });
+      sockets.push({ ...list(index) });
     }
     return sockets;
   },
@@ -68,5 +70,84 @@ export const Concat = makeFunctionNodeDefinition({
       listToConcat = concat(listToConcat, list);
     }
     write('result', listToConcat);
+  }
+});
+
+export const ListLoop = makeFlowNodeDefinition({
+  typeName: 'flow/loop/list',
+  category: NodeCategory.Flow,
+  label: 'list Loop',
+  in: {
+    flow: 'flow',
+    list: 'list',
+    startIndex: 'integer',
+    endIndex: 'integer'
+  },
+  out: {
+    loopBody: 'flow',
+    index: 'integer',
+    value: 'string', // convert as needed
+    completed: 'flow'
+  },
+  initialState: undefined,
+  triggered: ({ read, write, commit }) => {
+    const list = read<any[]>('list');
+    const startIndex = Math.max(0, Number(read<bigint>('startIndex')) ?? 0);
+    const endIndex = Math.min(
+      list.length,
+      Number(read<bigint>('endIndex')) ?? list.length
+    );
+    const loopBodyIteration = (i: number) => {
+      if (i < endIndex) {
+        write('value', JSON.stringify(list[i]));
+        write('index', i);
+        commit('loopBody', () => {
+          loopBodyIteration(i + 1);
+        });
+      } else {
+        commit('completed');
+      }
+    };
+    loopBodyIteration(startIndex);
+  }
+});
+
+export const getIndex = makeFunctionNodeDefinition({
+  typeName: 'logic/getIndex/list',
+  category: NodeCategory.Logic,
+  label: 'get Index',
+  in: {
+    list: 'list',
+    index: 'integer'
+  },
+  out: {
+    index: 'integer',
+    value: 'string'
+  },
+  exec: ({ read, write }) => {
+    const list = read<any[]>('list');
+    const index = read<number>('index');
+    Assert.mustBeTrue(
+      index >= 0 && index < list.length,
+      'ERROR: index out of range'
+    );
+    write('index', index);
+    write('value', JSON.stringify(list[index]));
+  }
+});
+
+export const getLength = makeFunctionNodeDefinition({
+  typeName: 'logic/getLength/list',
+  category: NodeCategory.Logic,
+  label: 'get Length',
+  in: {
+    list: 'list'
+  },
+  out: {
+    length: 'integer'
+  },
+  exec: ({ read, write }) => {
+    const list = read<any[]>('list');
+    write('length', list.length);
   }
 });

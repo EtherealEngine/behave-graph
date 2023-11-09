@@ -1,4 +1,4 @@
-import { makeFunctionNodeDefinition, makeInNOutFunctionDesc, NodeCategory, sequence } from '@behave-graph/core';
+import { Assert, makeFlowNodeDefinition, makeFunctionNodeDefinition, makeInNOutFunctionDesc, NodeCategory, sequence } from '@behave-graph/core';
 import { concat, equals } from 'rambdax';
 export const Constant = makeInNOutFunctionDesc({
     name: 'logic/list',
@@ -28,14 +28,14 @@ export const Concat = makeFunctionNodeDefinition({
     label: 'Concat',
     in: (_) => {
         const sockets = [];
-        const componentName = (index) => {
+        const list = (index) => {
             return {
                 key: `list${index}`,
                 valueType: 'list'
             };
         };
         for (const index of sequence(1, (_.numInputs ?? Concat.configuration?.numInputs.defaultValue) + 1)) {
-            sockets.push({ ...componentName(index) });
+            sockets.push({ ...list(index) });
         }
         return sockets;
     },
@@ -50,6 +50,77 @@ export const Concat = makeFunctionNodeDefinition({
             listToConcat = concat(listToConcat, list);
         }
         write('result', listToConcat);
+    }
+});
+export const ListLoop = makeFlowNodeDefinition({
+    typeName: 'flow/loop/list',
+    category: NodeCategory.Flow,
+    label: 'list Loop',
+    in: {
+        flow: 'flow',
+        list: 'list',
+        startIndex: 'integer',
+        endIndex: 'integer'
+    },
+    out: {
+        loopBody: 'flow',
+        index: 'integer',
+        value: 'string',
+        completed: 'flow'
+    },
+    initialState: undefined,
+    triggered: ({ read, write, commit }) => {
+        const list = read('list');
+        const startIndex = Math.max(0, Number(read('startIndex')) ?? 0);
+        const endIndex = Math.min(list.length, Number(read('endIndex')) ?? list.length);
+        const loopBodyIteration = (i) => {
+            if (i < endIndex) {
+                write('value', JSON.stringify(list[i]));
+                write('index', i);
+                commit('loopBody', () => {
+                    loopBodyIteration(i + 1);
+                });
+            }
+            else {
+                commit('completed');
+            }
+        };
+        loopBodyIteration(startIndex);
+    }
+});
+export const getIndex = makeFunctionNodeDefinition({
+    typeName: 'logic/getIndex/list',
+    category: NodeCategory.Logic,
+    label: 'get Index',
+    in: {
+        list: 'list',
+        index: 'integer'
+    },
+    out: {
+        index: 'integer',
+        value: 'string'
+    },
+    exec: ({ read, write }) => {
+        const list = read('list');
+        const index = read('index');
+        Assert.mustBeTrue(index >= 0 && index < list.length, 'ERROR: index out of range');
+        write('index', index);
+        write('value', JSON.stringify(list[index]));
+    }
+});
+export const getLength = makeFunctionNodeDefinition({
+    typeName: 'logic/getLength/list',
+    category: NodeCategory.Logic,
+    label: 'get Length',
+    in: {
+        list: 'list'
+    },
+    out: {
+        length: 'integer'
+    },
+    exec: ({ read, write }) => {
+        const list = read('list');
+        write('length', list.length);
     }
 });
 //# sourceMappingURL=ListNodes.js.map
