@@ -2,41 +2,6 @@
 import { getNodeDescriptions, getStringConversionsForValueType, memo } from '@behave-graph/core';
 import { ListNodes, ObjectNodes, ObjectValue } from './index.js';
 import { ListValue } from './Values/ListValue.js';
-/*
-export function registerStructProfile(
-  registry: IRegistry,
-  logger: ILogger = new DefaultLogger()
-) {
-  const { nodes, values } = registry;
-
-  // pull in value type nodes
-  values.register(ObjectValue);
-  values.register(ListValue);
-
-  // pull in value type nodes
-  nodes.register(AssocPath);
-  nodes.register(Constant);
-  nodes.register(Equal);
-  nodes.register(MergeDeep);
-  nodes.register(Path);
-  nodes.register(PathAsInteger);
-  nodes.register(PathAsString);
-  nodes.register(ListConstant);
-  nodes.register(ListEqual);
-  nodes.register(Concat);
-  nodes.register(Concat3);
-  nodes.register(LogObject.Description(logger));
-  nodes.register(LogList.Description(logger));
-  nodes.register(makeValidate(() => new Ajv()));
-
-  // string converters
-
-  ['object', 'list'].forEach((valueTypeName) => {
-    registerSerializersForValueType(registry, valueTypeName);
-  });
-
-  return registry;
-}*/
 export const getStructValuesMap = memo(() => {
     const valueTypes = [ObjectValue, ListValue];
     const temp = Object.fromEntries(valueTypes.map((valueType) => [valueType.name, valueType]));
