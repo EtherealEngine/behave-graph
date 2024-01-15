@@ -40,7 +40,7 @@ export declare const generateTriggerTester: <TInput extends SocketsDefinition, T
     /** Runtime configuration of the node */
     configuration?: NodeConfiguration | undefined;
     makeGraph?: (() => IGraph) | undefined;
-} & Pick<IHasTriggered<TInput, TOutput, TState>, "triggered" | "initialState"> & {
+} & Pick<IHasTriggered<TInput, TOutput, TState>, "initialState" | "triggered"> & {
     out: TOutput;
 }, configuration?: NodeConfiguration, makeGraph?: () => IGraph) => ({ inputVals, triggeringSocketName }: {
     /** input values to simulate on the input sockets */

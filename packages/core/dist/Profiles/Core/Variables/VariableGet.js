@@ -11,13 +11,14 @@ export const VariableGet = makeFunctionNodeDefinition({
     },
     in: {},
     out: (configuration, graph) => {
-        const variable = graph.variables[configuration.variableId] ||
-            new Variable('-1', 'undefined', 'string', '');
+        const variableId = Object.values(graph.variables).find((variable) => variable.name === configuration.variableName)?.id;
+        const variable = variableId !== undefined
+            ? graph.variables[variableId]
+            : new Variable('-1', '', 'string', '');
         const result = [
             {
-                key: 'value',
-                valueType: variable.valueTypeName,
-                label: variable.name
+                key: variable.name,
+                valueType: variable.valueTypeName
             }
         ];
         return result;

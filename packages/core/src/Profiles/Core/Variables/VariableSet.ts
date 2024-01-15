@@ -10,14 +10,18 @@ export const VariableSet = makeFlowNodeDefinition({
   category: NodeCategory.Action,
   label: 'Set',
   configuration: {
-    variableId: {
-      valueType: 'number'
+    variableName: {
+      valueType: 'string'
     }
   },
   in: (configuration, graph) => {
+    const variableId = Object.values(graph.variables).find(
+      (variable) => variable.name === configuration.variableName
+    )?.id;
     const variable =
-      graph.variables[configuration.variableId] ||
-      new Variable('-1', 'undefined', 'string', '');
+      variableId !== undefined
+        ? graph.variables[variableId]
+        : new Variable('-1', '', 'string', '');
 
     const sockets: SocketsList = [
       {
@@ -25,9 +29,8 @@ export const VariableSet = makeFlowNodeDefinition({
         valueType: 'flow'
       },
       {
-        key: 'value',
-        valueType: variable.valueTypeName,
-        label: variable.name
+        key: variable.name,
+        valueType: variable.valueTypeName
       }
     ];
 
