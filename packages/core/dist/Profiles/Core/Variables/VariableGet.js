@@ -5,8 +5,8 @@ export const VariableGet = makeFunctionNodeDefinition({
     category: NodeCategory.Query,
     label: 'Get',
     configuration: {
-        variableId: {
-            valueType: 'number'
+        variableName: {
+            valueType: 'string'
         }
     },
     in: {},
