@@ -162,7 +162,7 @@ export function readGraphFromJSON({
   };
 }
 
-function readNodeJSON({
+export function readNodeJSON({
   graph,
   registry,
   nodeJson
@@ -203,7 +203,7 @@ function readNodeJSON({
   return node;
 }
 
-function readNodeParameterJSON(
+export function readNodeParameterJSON(
   valuesRegistry: ValueTypeMap,
   node: INode,
   parametersJson: NodeParametersJSON
@@ -242,7 +242,7 @@ function readNodeParameterJSON(
   }
 }
 
-function readNodeFlowsJSON(node: INode, flowsJson: FlowsJSON) {
+export function readNodeFlowsJSON(node: INode, flowsJson: FlowsJSON) {
   node.outputs.forEach((socket) => {
     if (socket.name in flowsJson) {
       const outputLinkJson = flowsJson[socket.name];
@@ -267,7 +267,7 @@ function readNodeFlowsJSON(node: INode, flowsJson: FlowsJSON) {
   }
 }
 
-function readVariablesJSON(
+export function readVariablesJSON(
   valuesRegistry: ValueTypeMap,
   variablesJson: VariableJSON[]
 ) {
@@ -295,7 +295,7 @@ function readVariablesJSON(
   return variables;
 }
 
-function readCustomEventsJSON(
+export function readCustomEventsJSON(
   valuesRegistry: ValueTypeMap,
   customEventsJson: CustomEventJSON[]
 ) {

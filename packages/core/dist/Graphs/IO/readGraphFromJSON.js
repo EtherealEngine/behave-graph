@@ -93,7 +93,7 @@ export function readGraphFromJSON({ graphJson, registry }) {
         variables
     };
 }
-function readNodeJSON({ graph, registry, nodeJson }) {
+export function readNodeJSON({ graph, registry, nodeJson }) {
     if (nodeJson.type === undefined) {
         throw new Error('readGraphFromJSON: no type for node');
     }
@@ -121,7 +121,7 @@ function readNodeJSON({ graph, registry, nodeJson }) {
     }
     return node;
 }
-function readNodeParameterJSON(valuesRegistry, node, parametersJson) {
+export function readNodeParameterJSON(valuesRegistry, node, parametersJson) {
     node.inputs.forEach((socket) => {
         if (!(socket.name in parametersJson)) {
             return;
@@ -146,7 +146,7 @@ function readNodeParameterJSON(valuesRegistry, node, parametersJson) {
         }
     }
 }
-function readNodeFlowsJSON(node, flowsJson) {
+export function readNodeFlowsJSON(node, flowsJson) {
     node.outputs.forEach((socket) => {
         if (socket.name in flowsJson) {
             const outputLinkJson = flowsJson[socket.name];
@@ -163,7 +163,7 @@ function readNodeFlowsJSON(node, flowsJson) {
         }
     }
 }
-function readVariablesJSON(valuesRegistry, variablesJson) {
+export function readVariablesJSON(valuesRegistry, variablesJson) {
     const variables = {};
     for (let i = 0; i < variablesJson.length; i += 1) {
         const variableJson = variablesJson[i];
@@ -177,7 +177,7 @@ function readVariablesJSON(valuesRegistry, variablesJson) {
     }
     return variables;
 }
-function readCustomEventsJSON(valuesRegistry, customEventsJson) {
+export function readCustomEventsJSON(valuesRegistry, customEventsJson) {
     const customEvents = {};
     for (let i = 0; i < customEventsJson.length; i += 1) {
         const customEventJson = customEventsJson[i];

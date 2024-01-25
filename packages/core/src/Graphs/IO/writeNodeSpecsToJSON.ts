@@ -3,13 +3,14 @@ import { NodeConfigurationDescription } from '../../Nodes/Registry/NodeDescripti
 import { IRegistry } from '../../Registry.js';
 import { Choices } from '../../Sockets/Socket.js';
 import { createNode, makeGraphApi } from '../Graph.js';
-import { NodeConfigurationJSON } from './GraphJSON.js';
+import { NodeConfigurationJSON, VariableJSON } from './GraphJSON.js';
 import {
   ChoiceJSON,
   InputSocketSpecJSON,
   NodeSpecJSON,
   OutputSocketSpecJSON
 } from './NodeSpecJSON.js';
+import { readVariablesJSON } from './readGraphFromJSON.js';
 
 function toChoices(valueChoices: Choices | undefined): ChoiceJSON | undefined {
   return valueChoices?.map((choice) => {
@@ -22,12 +23,14 @@ function toChoices(valueChoices: Choices | undefined): ChoiceJSON | undefined {
 export function writeNodeSpecToJSON(
   registry: IRegistry,
   nodeTypeName: string,
-  configuration: NodeConfigurationJSON
+  configuration: NodeConfigurationJSON,
+  variableJson?: VariableJSON[]
 ): NodeSpecJSON {
+  const variables = readVariablesJSON(registry.values, variableJson ?? []);
   const graph = makeGraphApi({
     ...registry,
     customEvents: {},
-    variables: {}
+    variables: variables
   });
 
   const node = createNode({
@@ -36,6 +39,7 @@ export function writeNodeSpecToJSON(
     nodeTypeName,
     nodeConfiguration: configuration
   });
+
   const nodeDefinition: any = registry.nodes[nodeTypeName];
 
   const nodeSpecJSON: NodeSpecJSON = {

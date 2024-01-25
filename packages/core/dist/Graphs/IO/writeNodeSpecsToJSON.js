@@ -1,4 +1,5 @@
 import { createNode, makeGraphApi } from '../Graph.js';
+import { readVariablesJSON } from './readGraphFromJSON.js';
 function toChoices(valueChoices) {
     return valueChoices?.map((choice) => {
         if (typeof choice === 'string')
@@ -7,11 +8,12 @@ function toChoices(valueChoices) {
     });
 }
 // create JSON specs for a single node based on given configuration
-export function writeNodeSpecToJSON(registry, nodeTypeName, configuration) {
+export function writeNodeSpecToJSON(registry, nodeTypeName, configuration, variableJson) {
+    const variables = readVariablesJSON(registry.values, variableJson ?? []);
     const graph = makeGraphApi({
         ...registry,
         customEvents: {},
-        variables: {}
+        variables: variables
     });
     const node = createNode({
         graph,
