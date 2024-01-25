@@ -54,7 +54,6 @@ export const createNode = ({
   }
 
   const node = nodeDefinition.nodeFactory(graph, nodeConfiguration);
-
   node.inputs.forEach((socket: Socket) => {
     if (socket.valueTypeName !== 'flow' && socket.value === undefined) {
       socket.value = registry.values[socket.valueTypeName]?.creator();

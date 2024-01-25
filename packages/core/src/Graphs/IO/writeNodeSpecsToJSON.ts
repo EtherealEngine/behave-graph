@@ -32,7 +32,6 @@ export function writeNodeSpecToJSON(
     customEvents: {},
     variables: variables
   });
-
   const node = createNode({
     graph,
     registry,

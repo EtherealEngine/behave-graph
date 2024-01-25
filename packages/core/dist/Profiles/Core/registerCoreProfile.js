@@ -34,8 +34,6 @@ import * as IntegerNodes from './Values/IntegerNodes.js';
 import { IntegerValue } from './Values/IntegerValue.js';
 import * as StringNodes from './Values/StringNodes.js';
 import { StringValue } from './Values/StringValue.js';
-import { VariableGet } from './Variables/VariableGet.js';
-import { VariableSet } from './Variables/VariableSet.js';
 export const getCoreValuesMap = memo(() => {
     const valueTypes = [BooleanValue, StringValue, IntegerValue, FloatValue];
     return Object.fromEntries(valueTypes.map((valueType) => [valueType.name, valueType]));
@@ -54,9 +52,6 @@ export const getCoreNodesMap = memo(() => {
         // custom events
         OnCustomEvent.Description,
         TriggerCustomEvent.Description,
-        // variables
-        VariableGet,
-        VariableSet,
         // complex logic
         Easing,
         // actions

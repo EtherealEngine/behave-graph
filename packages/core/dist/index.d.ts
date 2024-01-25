@@ -71,8 +71,6 @@ export * as IntegerNodes from './Profiles/Core/Values/IntegerNodes.js';
 export * from './Profiles/Core/Values/IntegerValue.js';
 export * as StringNodes from './Profiles/Core/Values/StringNodes.js';
 export * from './Profiles/Core/Values/StringValue.js';
-export * from './Profiles/Core/Variables/VariableSet.js';
-export * from './Profiles/Core/Variables/VariableGet.js';
 export * from './Profiles/Core/registerCoreProfile.js';
 export * from './parseFloats.js';
 export * from './memo.js';
