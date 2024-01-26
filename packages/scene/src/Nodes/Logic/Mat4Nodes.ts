@@ -31,7 +31,7 @@ import {
 } from '../../Values/Internal/Mat4.js';
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'math/mat4',
+  name: 'math/mat4/constant',
   label: 'Mat4',
   in: ['mat4'],
   out: 'mat4',
@@ -39,7 +39,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Column4ToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/column4',
+  name: 'math/mat4/convert/toMat4/column4',
   label: 'Columns to Mat4',
   in: [{ x: 'vec4' }, { y: 'vec4' }, { z: 'vec4' }, { w: 'vec4' }],
   out: 'mat4',
@@ -47,7 +47,7 @@ export const Column4ToMat4 = makeInNOutFunctionDesc({
 });
 
 export const SetColumn = makeInNOutFunctionDesc({
-  name: 'math/setColumn/mat4',
+  name: 'math/mat4/setColumn',
   label: 'Set Column',
   in: ['mat4', 'integer', 'vec4'],
   out: 'mat4',
@@ -55,7 +55,7 @@ export const SetColumn = makeInNOutFunctionDesc({
 });
 
 export const SetRow = makeInNOutFunctionDesc({
-  name: 'math/setRow/mat4',
+  name: 'math/mat4/setRow',
   label: 'Set Row',
   in: ['mat4', 'integer', 'vec4'],
   out: 'mat4',
@@ -63,7 +63,7 @@ export const SetRow = makeInNOutFunctionDesc({
 });
 
 export const Elements = makeInNOutFunctionDesc({
-  name: 'math/toVec4/mat4', // should include columns4 in the name?
+  name: 'math/mat4/convert/toVec4', // should include columns4 in the name?
   label: 'Mat4 To Vec4',
   in: ['mat4'],
   out: [{ x: 'vec4' }, { y: 'vec4' }, { z: 'vec4' }, { w: 'vec4' }],
@@ -73,7 +73,7 @@ export const Elements = makeInNOutFunctionDesc({
 });
 
 export const Add = makeInNOutFunctionDesc({
-  name: 'math/add/mat4',
+  name: 'math/mat4/basic/add',
   label: '+',
   in: ['mat4', 'mat4'],
   out: 'mat4',
@@ -81,7 +81,7 @@ export const Add = makeInNOutFunctionDesc({
 });
 
 export const Subtract = makeInNOutFunctionDesc({
-  name: 'math/subtract/mat4',
+  name: 'math/mat4/basic/subtract',
   label: '-',
   in: ['mat4', 'mat4'],
   out: 'mat4',
@@ -89,7 +89,7 @@ export const Subtract = makeInNOutFunctionDesc({
 });
 
 export const Negate = makeInNOutFunctionDesc({
-  name: 'math/negate/mat4',
+  name: 'math/mat4/negate',
   label: '-',
   in: ['mat4'],
   out: 'mat4',
@@ -97,7 +97,7 @@ export const Negate = makeInNOutFunctionDesc({
 });
 
 export const MultiplyByScalar = makeInNOutFunctionDesc({
-  name: 'math/multiplyByScalar/mat4',
+  name: 'math/mat4/basic/multiplyByScalar',
   label: '×',
   in: ['mat4', 'float'],
   out: 'mat4',
@@ -105,7 +105,7 @@ export const MultiplyByScalar = makeInNOutFunctionDesc({
 });
 
 export const Determinant = makeInNOutFunctionDesc({
-  name: 'math/determinant/mat4',
+  name: 'math/mat4/determinant',
   label: 'Determinant',
   in: ['mat4'],
   out: 'float',
@@ -113,7 +113,7 @@ export const Determinant = makeInNOutFunctionDesc({
 });
 
 export const Adjoint = makeInNOutFunctionDesc({
-  name: 'math/adjoint/mat4',
+  name: 'math/mat4/basic/adjoint',
   label: 'Adjoint',
   in: ['mat4'],
   out: 'mat4',
@@ -121,7 +121,7 @@ export const Adjoint = makeInNOutFunctionDesc({
 });
 
 export const Inverse = makeInNOutFunctionDesc({
-  name: 'math/inverse/mat4',
+  name: 'math/mat4/basic/inverse',
   label: 'Inverse',
   in: ['mat4'],
   out: 'mat4',
@@ -129,7 +129,7 @@ export const Inverse = makeInNOutFunctionDesc({
 });
 
 export const Transpose = makeInNOutFunctionDesc({
-  name: 'math/transpose/mat4',
+  name: 'math/mat4/transpose',
   label: 'Transpose',
   in: ['mat4'],
   out: 'mat4',
@@ -137,7 +137,7 @@ export const Transpose = makeInNOutFunctionDesc({
 });
 
 export const Mat3ToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/mat3',
+  name: 'math/mat3/convert/toMat4',
   label: 'Mat3 To Mat4',
   in: ['mat3'],
   out: 'mat4',
@@ -145,7 +145,7 @@ export const Mat3ToMat4 = makeInNOutFunctionDesc({
 });
 
 export const Scale3ToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/scale3',
+  name: 'math/mat4/convert/toMat4/scale3',
   label: 'Scale3 To Mat4',
   in: ['vec3'],
   out: 'mat4',
@@ -153,7 +153,7 @@ export const Scale3ToMat4 = makeInNOutFunctionDesc({
 });
 
 export const Translate3ToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/translate3',
+  name: 'math/mat4/convert/toMat4/translate3',
   label: 'Translate3 To Mat4',
   in: ['vec3'],
   out: 'mat4',
@@ -161,7 +161,7 @@ export const Translate3ToMat4 = makeInNOutFunctionDesc({
 });
 
 export const QuatToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/quat',
+  name: 'math/quat/convert/toMat4',
   label: 'Quat To Mat4',
   in: ['quat'],
   out: 'mat4',
@@ -169,7 +169,7 @@ export const QuatToMat4 = makeInNOutFunctionDesc({
 });
 
 export const EulerToMat4 = makeInNOutFunctionDesc({
-  name: 'math/toMat4/euler',
+  name: 'math/euler/convert/toMat4',
   label: 'Euler To Mat4',
   in: ['euler'],
   out: 'mat4',
@@ -177,7 +177,7 @@ export const EulerToMat4 = makeInNOutFunctionDesc({
 });
 
 export const Translate = makeInNOutFunctionDesc({
-  name: 'math/translate/mat4',
+  name: 'math/mat4/translate',
   label: 'Translate',
   in: ['mat4', 'vec3'],
   out: 'mat4',
@@ -185,7 +185,7 @@ export const Translate = makeInNOutFunctionDesc({
 });
 
 export const Scale = makeInNOutFunctionDesc({
-  name: 'math/scale/mat4',
+  name: 'math/mat4/basic/scale',
   label: 'Scale',
   in: ['mat4', 'vec3'],
   out: 'mat4',
@@ -193,7 +193,7 @@ export const Scale = makeInNOutFunctionDesc({
 });
 
 export const RotateByQuat = makeInNOutFunctionDesc({
-  name: 'math/rotateByQuat/mat4',
+  name: 'math/mat4/rotateByQuat',
   label: 'Rotate',
   in: ['mat4', 'quat'],
   out: 'mat4',
@@ -201,7 +201,7 @@ export const RotateByQuat = makeInNOutFunctionDesc({
 });
 
 export const RotateByEuler = makeInNOutFunctionDesc({
-  name: 'math/rotateByEuler/mat4',
+  name: 'math/mat4/rotateByEuler',
   label: 'Rotate',
   in: ['mat4', 'euler'],
   out: 'mat4',
@@ -209,23 +209,23 @@ export const RotateByEuler = makeInNOutFunctionDesc({
 });
 
 export const Multiply = makeInNOutFunctionDesc({
-  name: 'math/multiply/mat4',
-  label: 'Cross',
+  name: 'math/mat4/basic/multiply',
+  label: 'Matrix4 Multiply',
   in: ['mat4', 'mat4'],
   out: 'mat4',
   exec: mat4Multiply
 });
 
 export const Mix = makeInNOutFunctionDesc({
-  name: 'math/mix/mat4',
-  label: '÷',
+  name: 'math/mat4/basic/mix',
+  label: 'Matrix4 Mix',
   in: [{ a: 'mat4' }, { b: 'mat4' }, { t: 'float' }],
   out: 'mat4',
   exec: mat4Mix
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'math/equal/mat4',
+  name: 'math/mat4/convert/equal',
   label: '=',
   in: [{ a: 'mat4' }, { b: 'mat4' }, { tolerance: 'float' }],
   out: 'boolean',
@@ -233,7 +233,7 @@ export const Equal = makeInNOutFunctionDesc({
 });
 
 export const TransformPoint3 = makeInNOutFunctionDesc({
-  name: 'math/transformPoint3/mat4',
+  name: 'math/mat4/transformPoint3',
   label: 'Transform Point3',
   in: ['mat4', 'vec3'],
   out: 'vec3',
@@ -241,7 +241,7 @@ export const TransformPoint3 = makeInNOutFunctionDesc({
 });
 
 export const TransformNormal3 = makeInNOutFunctionDesc({
-  name: 'math/transformNormal3/mat4',
+  name: 'math/mat4/transformNormal3',
   label: 'Transform Normal',
   in: ['mat4', 'vec3'],
   out: 'vec3',
@@ -249,7 +249,7 @@ export const TransformNormal3 = makeInNOutFunctionDesc({
 });
 
 export const LookAt = makeInNOutFunctionDesc({
-  name: 'math/lookAt/mat4',
+  name: 'math/mat4/lookAt',
   label: 'Look At',
   in: [{ eye: 'vec3' }, { target: 'vec3' }, { up: 'vec3' }],
   out: 'mat4',

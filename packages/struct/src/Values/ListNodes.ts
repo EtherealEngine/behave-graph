@@ -10,7 +10,7 @@ import {
 import { concat, equals } from 'rambdax';
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'logic/list',
+  name: 'logic/list/constant',
   category: NodeCategory.Logic,
   label: 'List',
   in: ['list'],
@@ -19,7 +19,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'logic/equal/list',
+  name: 'logic/list/compare/equal',
   category: NodeCategory.Logic,
   label: '=',
   in: ['list', 'list'],
@@ -28,7 +28,7 @@ export const Equal = makeInNOutFunctionDesc({
 });
 
 export const Concat = makeFunctionNodeDefinition({
-  typeName: 'logic/concat/list',
+  typeName: 'logic/list/concat',
   category: NodeCategory.Logic,
   configuration: {
     numInputs: {
@@ -74,7 +74,7 @@ export const Concat = makeFunctionNodeDefinition({
 });
 
 export const ListLoop = makeFlowNodeDefinition({
-  typeName: 'flow/loop/list',
+  typeName: 'logic/list/loop',
   category: NodeCategory.Flow,
   label: 'list Loop',
   in: {
@@ -113,7 +113,7 @@ export const ListLoop = makeFlowNodeDefinition({
 });
 
 export const getIndex = makeFunctionNodeDefinition({
-  typeName: 'logic/getIndex/list',
+  typeName: 'logic/list/getIndex',
   category: NodeCategory.Logic,
   label: 'get Index',
   in: {
@@ -137,7 +137,7 @@ export const getIndex = makeFunctionNodeDefinition({
 });
 
 export const getLength = makeFunctionNodeDefinition({
-  typeName: 'logic/getLength/list',
+  typeName: 'logic/list/getLength',
   category: NodeCategory.Logic,
   label: 'get Length',
   in: {

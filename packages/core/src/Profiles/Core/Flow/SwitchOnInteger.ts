@@ -7,7 +7,7 @@ import { sequence } from '../../../sequence.js';
 // https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/UserGuide/flow/
 
 export const SwitchOnInteger = makeFlowNodeDefinition({
-  typeName: 'flow/switch/integer',
+  typeName: 'flow/decision/switch/integer',
   label: 'Switch on Int',
   configuration: {
     numCases: {

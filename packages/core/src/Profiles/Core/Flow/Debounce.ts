@@ -9,7 +9,7 @@ import { Socket } from '../../../Sockets/Socket.js';
 
 export class Debounce extends AsyncNode {
   public static Description = new NodeDescription(
-    'flow/debounce',
+    'flow/rate/debounce',
     'Flow',
     'Debounce',
     (description, graph) => new Debounce(description, graph)

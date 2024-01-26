@@ -1,6 +1,6 @@
 import { makeInNOutFunctionDesc } from '../../../Nodes/FunctionNode.js';
 export const Constant = makeInNOutFunctionDesc({
-  name: 'logic/string',
+  name: 'logic/string/constant',
   label: 'String',
   in: ['string'],
   out: 'string',
@@ -8,7 +8,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Concat = makeInNOutFunctionDesc({
-  name: 'logic/concat/string',
+  name: 'logic/string/concat',
   label: 'Concat',
   in: ['string', 'string'],
   out: 'string',
@@ -16,7 +16,7 @@ export const Concat = makeInNOutFunctionDesc({
 });
 
 export const Includes = makeInNOutFunctionDesc({
-  name: 'logic/includes/string',
+  name: 'logic/string/includes',
   label: 'Includes',
   in: ['string', 'string'],
   out: 'boolean',
@@ -24,7 +24,7 @@ export const Includes = makeInNOutFunctionDesc({
 });
 
 export const Length = makeInNOutFunctionDesc({
-  name: 'logic/length/string',
+  name: 'logic/string/length',
   label: 'Length',
   in: ['string'],
   out: 'integer',
@@ -32,7 +32,7 @@ export const Length = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'math/equal/string',
+  name: 'math/string/compare/equal',
   label: '=',
   in: ['string', 'string'],
   out: 'boolean',

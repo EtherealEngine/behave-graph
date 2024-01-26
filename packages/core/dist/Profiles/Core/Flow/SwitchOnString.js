@@ -2,7 +2,7 @@ import { makeFlowNodeDefinition } from '../../../Nodes/NodeDefinitions.js';
 import { sequence } from '../../../sequence.js';
 // https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/UserGuide/flow/
 export const SwitchOnString = makeFlowNodeDefinition({
-    typeName: 'flow/switch/string',
+    typeName: 'flow/decision/switch/string',
     label: 'Switch on String',
     configuration: {
         numCases: {

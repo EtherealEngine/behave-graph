@@ -1,6 +1,7 @@
 import { Assert } from '../../../Diagnostics/Assert.js';
 import { Engine } from '../../../Execution/Engine.js';
 import { IGraph } from '../../../Graphs/Graph.js';
+import { NodeCategory } from '../../../index.js';
 import { AsyncNode } from '../../../Nodes/AsyncNode.js';
 import { NodeDescription } from '../../../Nodes/Registry/NodeDescription.js';
 import { Socket } from '../../../Sockets/Socket.js';
@@ -9,8 +10,8 @@ import { Socket } from '../../../Sockets/Socket.js';
 
 export class Throttle extends AsyncNode {
   public static Description = new NodeDescription(
-    'flow/throttle',
-    'Flow',
+    'flow/rate/throttle',
+    NodeCategory.Flow,
     'Throttle',
     (description, graph) => new Throttle(description, graph)
   );

@@ -2,166 +2,166 @@ import { degreesToRadians, equalsTolerance, radiansToDegrees } from '../../../ma
 import { makeInNOutFunctionDesc } from '../../../Nodes/FunctionNode.js';
 // Unreal Engine Blueprint Float nodes: https://docs.unrealengine.com/4.27/en-US/BlueprintAPI/Math/Float/
 export const Constant = makeInNOutFunctionDesc({
-    name: 'math/float',
+    name: 'math/float/constant',
     label: 'Float',
     in: ['float'],
     out: 'float',
     exec: (a) => a
 });
 export const Add = makeInNOutFunctionDesc({
-    name: 'math/add/float',
+    name: 'math/float/basic/add',
     label: '+',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => a + b
 });
 export const Subtract = makeInNOutFunctionDesc({
-    name: 'math/subtract/float',
+    name: 'math/float/basic/subtract',
     label: '-',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => a - b
 });
 export const Negate = makeInNOutFunctionDesc({
-    name: 'math/negate/float',
+    name: 'math/float/negate',
     label: '-',
     in: ['float'],
     out: 'float',
     exec: (a) => -a
 });
 export const Multiply = makeInNOutFunctionDesc({
-    name: 'math/multiply/float',
+    name: 'math/float/basic/multiply',
     label: '×',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => a * b
 });
 export const Divide = makeInNOutFunctionDesc({
-    name: 'math/divide/float',
+    name: 'math/float/basic/divide',
     label: '÷',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => a / b
 });
 export const Modulus = makeInNOutFunctionDesc({
-    name: 'math/modulus/float',
+    name: 'math/float/basic/modulus',
     label: 'MOD',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => a % b
 });
 export const Power = makeInNOutFunctionDesc({
-    name: 'math/pow/float',
+    name: 'math/float/transcendental/pow',
     label: 'POW',
     in: ['float', 'float'],
     out: 'float',
     exec: Math.pow
 });
 export const SquareRoot = makeInNOutFunctionDesc({
-    name: 'math/sqrt/float',
+    name: 'math/float/transcendental/sqrt',
     label: '√',
     in: ['float'],
     out: 'float',
     exec: Math.sqrt
 });
 export const E = makeInNOutFunctionDesc({
-    name: 'math/e/float',
+    name: 'math/float/mathConstant/e',
     label: '𝑒',
     out: 'float',
     exec: () => Math.E
 });
 export const Exp = makeInNOutFunctionDesc({
-    name: 'math/exp/float',
+    name: 'math/float/transcendental/exp',
     label: 'EXP',
     in: ['float'],
     out: 'float',
     exec: Math.exp
 });
 export const Ln = makeInNOutFunctionDesc({
-    name: 'math/ln/float',
+    name: 'math/float/transcendental/ln',
     label: 'LN',
     in: ['float'],
     out: 'float',
     exec: Math.log
 });
 export const Log2 = makeInNOutFunctionDesc({
-    name: 'math/log2/float',
+    name: 'math/float/transcendental/log2',
     label: 'LOG2',
     in: ['float'],
     out: 'float',
     exec: Math.log2
 });
 export const Log10 = makeInNOutFunctionDesc({
-    name: 'math/log10/float',
+    name: 'math/float/transcendental/log10',
     label: 'LOG10',
     in: ['float'],
     out: 'float',
     exec: Math.log10
 });
 export const PI = makeInNOutFunctionDesc({
-    name: 'math/pi/float',
+    name: 'math/float/mathConstant/pi',
     label: 'π',
     out: 'float',
     exec: () => Math.PI
 });
 export const Sin = makeInNOutFunctionDesc({
-    name: 'math/sin/float',
+    name: 'math/float/trig/sin',
     label: 'SIN',
     in: ['float'],
     out: 'float',
     exec: Math.sin
 });
 export const Asin = makeInNOutFunctionDesc({
-    name: 'math/asin/float',
+    name: 'math/float/trig/asin',
     label: 'ASIN',
     in: ['float'],
     out: 'float',
     exec: Math.asin
 });
 export const Cos = makeInNOutFunctionDesc({
-    name: 'math/cos/float',
+    name: 'math/float/trig/cos',
     label: 'COS',
     in: ['float'],
     out: 'float',
     exec: Math.cos
 });
 export const Acos = makeInNOutFunctionDesc({
-    name: 'math/acos/float',
+    name: 'math/float/trig/acos',
     label: 'ACOS',
     in: ['float'],
     out: 'float',
     exec: Math.acos
 });
 export const Tan = makeInNOutFunctionDesc({
-    name: 'math/tan/float',
+    name: 'math/float/trig/tan',
     label: 'TAN',
     in: ['float'],
     out: 'float',
     exec: Math.tan
 });
 export const RadiansToDegrees = makeInNOutFunctionDesc({
-    name: 'math/radiansToDegrees/float',
+    name: 'math/float/trig/radiansToDegrees',
     label: 'To Degrees',
     in: ['float'],
     out: 'float',
     exec: radiansToDegrees
 });
 export const DegreesToRadians = makeInNOutFunctionDesc({
-    name: 'math/degreesToRadians/float',
+    name: 'math/float/trig/degreesToRadians',
     label: 'To Radians',
     in: ['float'],
     out: 'float',
     exec: degreesToRadians
 });
 export const Atan = makeInNOutFunctionDesc({
-    name: 'math/atan/float',
+    name: 'math/float/trig/atan',
     label: 'ATAN',
     in: ['float'],
     out: 'float',
     exec: Math.atan
 });
 export const Mix = makeInNOutFunctionDesc({
-    name: 'math/mix/float',
+    name: 'math/float/basic/mix',
     label: 'MIX',
     in: ['float', 'float', 'float'],
     out: 'float',
@@ -171,132 +171,132 @@ export const Mix = makeInNOutFunctionDesc({
     }
 });
 export const ToFloat = makeInNOutFunctionDesc({
-    name: 'math/toFloat/float',
+    name: 'math/float/convert/toFloat',
     label: 'To Float',
     in: ['float'],
     out: 'float',
     exec: (a) => Number(a)
 });
 export const Min = makeInNOutFunctionDesc({
-    name: 'math/min/float',
+    name: 'math/float/basic/min',
     label: 'MIN',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => Math.min(a, b) // TODO: can I jsut pass in Math.min?
 });
 export const Max = makeInNOutFunctionDesc({
-    name: 'math/max/float',
+    name: 'math/float/basic/max',
     label: 'MAX',
     in: ['float', 'float'],
     out: 'float',
     exec: (a, b) => Math.max(a, b) // TODO: can I jsut pass in Math.max?
 });
 export const Clamp = makeInNOutFunctionDesc({
-    name: 'math/clamp/float',
+    name: 'math/float/precision/clamp',
     label: 'CLAMP',
     in: ['float', 'float', 'float'],
     out: 'float',
     exec: (value, min, max) => value < min ? min : value > max ? max : value
 });
 export const Abs = makeInNOutFunctionDesc({
-    name: 'math/abs/float',
+    name: 'math/float/abs',
     label: 'ABS',
     in: ['float'],
     out: 'float',
     exec: Math.abs
 });
 export const Sign = makeInNOutFunctionDesc({
-    name: 'math/sign/float',
+    name: 'math/float/sign',
     label: 'SIGN',
     in: ['float'],
     out: 'float',
     exec: Math.sign
 });
 export const Floor = makeInNOutFunctionDesc({
-    name: 'math/floor/float',
+    name: 'math/float/precision/floor',
     label: 'FLOOR',
     in: ['float'],
     out: 'float',
     exec: Math.floor
 });
 export const Ceil = makeInNOutFunctionDesc({
-    name: 'math/ceil/float',
+    name: 'math/float/precision/ceil',
     label: 'CEIL',
     in: ['float'],
     out: 'float',
     exec: Math.ceil
 });
 export const Round = makeInNOutFunctionDesc({
-    name: 'math/round/float',
+    name: 'math/float/precision/round',
     label: 'ROUND',
     in: ['float'],
     out: 'float',
     exec: Math.round
 });
 export const Trunc = makeInNOutFunctionDesc({
-    name: 'math/trunc/float',
+    name: 'math/float/precision/trunc',
     label: 'TRUNC',
     in: ['float'],
     out: 'float',
     exec: Math.trunc
 });
 export const Random = makeInNOutFunctionDesc({
-    name: 'math/random/float',
+    name: 'math/float/random',
     label: 'RANDOM',
     out: 'float',
     exec: Math.random
 });
 export const Equal = makeInNOutFunctionDesc({
-    name: 'math/equal/float',
+    name: 'math/float/compare/equal',
     label: '=',
     in: ['float', 'float'],
     out: 'boolean',
     exec: (a, b) => a === b
 });
 export const EqualTolerance = makeInNOutFunctionDesc({
-    name: 'math/equalTolerance/float',
+    name: 'math/float/compare/equalTolerance',
     label: '=',
     in: ['float', 'float', 'float'],
     out: 'boolean',
     exec: (a, b, tolerance) => equalsTolerance(a, b, tolerance)
 });
 export const GreaterThan = makeInNOutFunctionDesc({
-    name: 'math/greaterThan/float',
+    name: 'math/float/compare/greaterThan',
     label: '>',
     in: ['float', 'float'],
     out: 'boolean',
     exec: (a, b) => a > b
 });
 export const GreaterThanOrEqual = makeInNOutFunctionDesc({
-    name: 'math/greaterThanOrEqual/float',
+    name: 'math/float/compare/greaterThanOrEqual',
     label: '≥',
     in: ['float', 'float'],
     out: 'boolean',
     exec: (a, b) => a >= b
 });
 export const LessThan = makeInNOutFunctionDesc({
-    name: 'math/lessThan/float',
+    name: 'math/float/compare/lessThan',
     label: '<',
     in: ['float', 'float'],
     out: 'boolean',
     exec: (a, b) => a < b
 });
 export const LessThanOrEqual = makeInNOutFunctionDesc({
-    name: 'math/lessThanOrEqual/float',
+    name: 'math/float/compare/lessThanOrEqual',
     label: '≤',
     in: ['float', 'float'],
     out: 'boolean',
     exec: (a, b) => a <= b
 });
 export const IsNaN = makeInNOutFunctionDesc({
-    name: 'math/isNaN/float',
+    name: 'math/float/compare/isNaN',
     label: 'isNaN',
     in: ['float'],
     out: 'boolean',
     exec: Number.isNaN
 });
 export const IsInf = makeInNOutFunctionDesc({
-    name: 'math/isInf/float',
+    name: 'math/float/compare/isInf',
     label: 'isInf',
     in: ['float'],
     out: 'boolean',

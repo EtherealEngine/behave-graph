@@ -17,5 +17,5 @@ export class LogObject extends FlowNode {
         fiber.commit(this, 'flow');
     }
 }
-LogObject.Description = (logger) => new NodeDescription('debug/log/object', NodeCategory.Action, 'Log', (description, graph) => new LogObject(description, graph, logger));
+LogObject.Description = (logger) => new NodeDescription('logic/object/log', NodeCategory.Action, 'Log', (description, graph) => new LogObject(description, graph, logger));
 //# sourceMappingURL=LogObject.js.map

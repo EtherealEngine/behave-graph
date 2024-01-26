@@ -11,7 +11,7 @@ import {
 export class LogList extends FlowNode {
   public static Description = (logger: ILogger) =>
     new NodeDescription(
-      'debug/log/list',
+      'logic/list/log',
       NodeCategory.Action,
       'Log',
       (description, graph) => new LogList(description, graph, logger)

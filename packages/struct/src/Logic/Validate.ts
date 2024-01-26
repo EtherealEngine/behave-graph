@@ -6,7 +6,7 @@ export type IValidatorFactory = () => ValidateFunction;
 
 export const makeValidate = (validatorFactory: IValidatorFactory) => {
   return makeFunctionNodeDefinition({
-    typeName: 'logic/validate/object',
+    typeName: 'logic/object/validate',
     category: NodeCategory.Logic,
     label: 'Validate',
     in: {

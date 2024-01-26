@@ -1,7 +1,7 @@
 import { makeFunctionNodeDefinition, NodeCategory } from '@behave-graph/core';
 export const makeValidate = (validatorFactory) => {
     return makeFunctionNodeDefinition({
-        typeName: 'logic/validate/object',
+        typeName: 'logic/object/validate',
         category: NodeCategory.Logic,
         label: 'Validate',
         in: {

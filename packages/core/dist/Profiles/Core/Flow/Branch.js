@@ -1,6 +1,6 @@
 import { makeFlowNodeDefinition, NodeCategory } from '../../../Nodes/NodeDefinitions.js';
 export const Branch = makeFlowNodeDefinition({
-    typeName: 'flow/branch',
+    typeName: 'flow/decision/branch',
     category: NodeCategory.Flow,
     label: 'Branch',
     helpDescription: "Checks the value of the 'condition' input and if true, executes the 'true' branch, otherwise it executes the 'false' branch.",

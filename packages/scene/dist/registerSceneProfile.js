@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { getCoreValuesMap, getNodeDescriptions, getStringConversionsForValueType, memo } from '@behave-graph/core';
-import { ColorNodes, ColorValue, EulerNodes, EulerValue, GetSceneProperty, Mat3Nodes, Mat3Value, Mat4Nodes, Mat4Value, OnSceneNodeClick, QuatNodes, QuatValue, SetSceneProperty, Vec2Nodes, Vec2Value, Vec3Nodes, Vec3Value, Vec4Nodes, Vec4Value } from './index.js';
+import { ColorNodes, ColorValue, EulerNodes, EulerValue, Mat3Nodes, Mat3Value, Mat4Nodes, Mat4Value, QuatNodes, QuatValue, Vec2Nodes, Vec2Value, Vec3Nodes, Vec3Value, Vec4Nodes, Vec4Value } from './index.js';
 export const getSceneValuesMap = memo(() => {
     const valueTypes = [
         Vec2Value,
@@ -32,10 +32,10 @@ export const getSceneNodesMap = memo(() => {
         ...getNodeDescriptions(Mat3Nodes),
         ...getNodeDescriptions(Mat4Nodes),
         // events
-        OnSceneNodeClick,
+        //OnSceneNodeClick,
         // actions
-        ...SetSceneProperty(allValueTypeNames),
-        ...GetSceneProperty(allValueTypeNames),
+        //...SetSceneProperty(allValueTypeNames),
+        //...GetSceneProperty(allValueTypeNames),
         ...getSceneStringConversions(getSceneValuesMap())
     ];
     return Object.fromEntries(nodeDefinitions.map((nodeDefinition) => [
