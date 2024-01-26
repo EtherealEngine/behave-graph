@@ -2,8 +2,6 @@
 import { memo } from '../../memo.js';
 import { getNodeDescriptions } from '../../Nodes/Registry/NodeDescription.js';
 import { getStringConversionsForValueType } from '../registerSerializersForValueType.js';
-import { OnCustomEvent } from './CustomEvents/OnCustomEvent.js';
-import { TriggerCustomEvent } from './CustomEvents/TriggerCustomEvent.js';
 import { ExpectTrue as AssertExpectTrue } from './Debug/AssertExpectTrue.js';
 import { Log as DebugLog } from './Debug/DebugLog.js';
 import { Branch } from './Flow/Branch.js';
@@ -50,8 +48,8 @@ export const getCoreNodesMap = memo(() => {
         ...getNodeDescriptions(IntegerNodes),
         ...getNodeDescriptions(FloatNodes),
         // custom events
-        OnCustomEvent.Description,
-        TriggerCustomEvent.Description,
+        //OnCustomEvent.Description,
+        //TriggerCustomEvent.Description,
         // complex logic
         Easing,
         // actions

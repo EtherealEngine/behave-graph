@@ -15,7 +15,7 @@ import {
 } from '../../Values/Internal/Vec2.js';
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'math/vec2',
+  name: 'math/vec2/constant',
   label: 'Vec2',
   in: ['vec2'],
   out: 'vec2',
@@ -23,7 +23,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Create = makeInNOutFunctionDesc({
-  name: 'math/toVec2/float',
+  name: 'math/float/convert/toVec2',
   label: 'Float to Vec2',
   in: [{ x: 'float' }, { y: 'float' }],
   out: 'vec2',
@@ -31,7 +31,7 @@ export const Create = makeInNOutFunctionDesc({
 });
 
 export const Elements = makeInNOutFunctionDesc({
-  name: 'math/toFloat/vec2',
+  name: 'math/vec2/convert/toFloat',
   label: 'Vec2 To Float',
   in: ['vec2'],
   out: [{ x: 'float' }, { y: 'float' }],
@@ -39,7 +39,7 @@ export const Elements = makeInNOutFunctionDesc({
 });
 
 export const Add = makeInNOutFunctionDesc({
-  name: 'math/add/vec2',
+  name: 'math/vec2/basic/add',
   label: '+',
   in: ['vec2', 'vec2'],
   out: 'vec2',
@@ -47,7 +47,7 @@ export const Add = makeInNOutFunctionDesc({
 });
 
 export const Subtract = makeInNOutFunctionDesc({
-  name: 'math/subtract/vec2',
+  name: 'math/vec2/basic/subtract',
   label: '-',
   in: ['vec2', 'vec2'],
   out: 'vec2',
@@ -55,7 +55,7 @@ export const Subtract = makeInNOutFunctionDesc({
 });
 
 export const Negate = makeInNOutFunctionDesc({
-  name: 'math/negate/vec2',
+  name: 'math/vec2/negate',
   label: '-',
   in: ['vec2'],
   out: 'vec2',
@@ -63,7 +63,7 @@ export const Negate = makeInNOutFunctionDesc({
 });
 
 export const Scale = makeInNOutFunctionDesc({
-  name: 'math/scale/vec2',
+  name: 'math/vec2/basic/scale',
   label: '×',
   in: ['vec2', 'float'],
   out: 'vec2',
@@ -71,7 +71,7 @@ export const Scale = makeInNOutFunctionDesc({
 });
 
 export const Length = makeInNOutFunctionDesc({
-  name: 'math/length/vec2',
+  name: 'math/vec2/length',
   label: 'Length',
   in: ['vec2'],
   out: 'float',
@@ -79,7 +79,7 @@ export const Length = makeInNOutFunctionDesc({
 });
 
 export const Normalize = makeInNOutFunctionDesc({
-  name: 'math/normalize/vec2',
+  name: 'math/vec2/normalize',
   label: 'Normalize',
   in: ['vec2'],
   out: 'vec2',
@@ -87,7 +87,7 @@ export const Normalize = makeInNOutFunctionDesc({
 });
 
 export const Dot = makeInNOutFunctionDesc({
-  name: 'math/dot/vec2',
+  name: 'math/vec2/basic/dot',
   label: 'Dot Product',
   in: ['vec2', 'vec2'],
   out: 'float',
@@ -95,7 +95,7 @@ export const Dot = makeInNOutFunctionDesc({
 });
 
 export const Mix = makeInNOutFunctionDesc({
-  name: 'math/mix/vec2',
+  name: 'math/vec2/basic/mix',
   label: '÷',
   in: [{ a: 'vec2' }, { b: 'vec2' }, { t: 'float' }],
   out: 'vec2',
@@ -103,7 +103,7 @@ export const Mix = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'math/equal/vec2',
+  name: 'math/vec2/compare/equal',
   label: '=',
   in: [{ a: 'vec2' }, { b: 'vec2' }, { tolerance: 'float' }],
   out: 'boolean',

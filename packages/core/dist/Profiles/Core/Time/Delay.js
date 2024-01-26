@@ -29,8 +29,7 @@ class Delay extends AsyncNode {
     }
 }
 Delay.Description = new NodeDescription2({
-    typeName: 'time/delay',
-    otherTypeNames: ['flow/delay'],
+    typeName: 'flow/time/delay',
     category: 'Time',
     label: 'Delay',
     factory: (description, graph) => new Delay(description, graph)

@@ -2,7 +2,7 @@ import { makeInNOutFunctionDesc } from '../../../Nodes/FunctionNode.js';
 // Unreal Engine Integer Blueprints API: https://docs.unrealengine.com/4.27/en-US/BlueprintAPI/Math/Integer/
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'math/integer',
+  name: 'math/integer/constant',
   label: 'Integer',
   in: ['integer'],
   out: 'integer',
@@ -10,7 +10,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Add = makeInNOutFunctionDesc({
-  name: 'math/add/integer',
+  name: 'math/integer/basic/add',
   label: '+',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -18,7 +18,7 @@ export const Add = makeInNOutFunctionDesc({
 });
 
 export const Subtract = makeInNOutFunctionDesc({
-  name: 'math/subtract/integer',
+  name: 'math/integer/basic/subtract',
   label: '-',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -26,7 +26,7 @@ export const Subtract = makeInNOutFunctionDesc({
 });
 
 export const Negate = makeInNOutFunctionDesc({
-  name: 'math/negate/integer',
+  name: 'math/integer/negate',
   label: '-',
   in: ['integer'],
   out: 'integer',
@@ -34,7 +34,7 @@ export const Negate = makeInNOutFunctionDesc({
 });
 
 export const Multiply = makeInNOutFunctionDesc({
-  name: 'math/multiply/integer',
+  name: 'math/integer/basic/multiply',
   label: '×',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -42,7 +42,7 @@ export const Multiply = makeInNOutFunctionDesc({
 });
 
 export const Divide = makeInNOutFunctionDesc({
-  name: 'math/divide/integer',
+  name: 'math/integer/basic/divide',
   label: '÷',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -50,7 +50,7 @@ export const Divide = makeInNOutFunctionDesc({
 });
 
 export const Modulus = makeInNOutFunctionDesc({
-  name: 'math/modulus/integer',
+  name: 'math/integer/basic/modulus',
   label: 'MOD',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -58,7 +58,7 @@ export const Modulus = makeInNOutFunctionDesc({
 });
 
 export const ToFloat = makeInNOutFunctionDesc({
-  name: 'math/toFloat/integer',
+  name: 'math/integer/convert/toFloat',
   label: 'To Float',
   in: ['integer'],
   out: 'float',
@@ -66,7 +66,7 @@ export const ToFloat = makeInNOutFunctionDesc({
 });
 
 export const Min = makeInNOutFunctionDesc({
-  name: 'math/min/integer',
+  name: 'math/integer/basic/min',
   label: 'MIN',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -74,7 +74,7 @@ export const Min = makeInNOutFunctionDesc({
 });
 
 export const Max = makeInNOutFunctionDesc({
-  name: 'math/max/integer',
+  name: 'math/integer/basic/max',
   label: 'MAX',
   in: ['integer', 'integer'],
   out: 'integer',
@@ -82,7 +82,7 @@ export const Max = makeInNOutFunctionDesc({
 });
 
 export const Clamp = makeInNOutFunctionDesc({
-  name: 'math/clamp/integer',
+  name: 'math/integer/precision/clamp',
   label: 'CLAMP',
   in: [{ value: 'integer' }, { min: 'integer' }, { max: 'integer' }],
   out: 'integer',
@@ -91,7 +91,7 @@ export const Clamp = makeInNOutFunctionDesc({
 });
 
 export const Abs = makeInNOutFunctionDesc({
-  name: 'math/abs/integer',
+  name: 'math/integer/abs',
   label: 'ABS',
   in: ['integer'],
   out: 'integer',
@@ -99,7 +99,7 @@ export const Abs = makeInNOutFunctionDesc({
 });
 
 export const Sign = makeInNOutFunctionDesc({
-  name: 'math/sign/integer',
+  name: 'math/integer/sign',
   label: 'SIGN',
   in: ['integer'],
   out: 'integer',
@@ -107,7 +107,7 @@ export const Sign = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'math/equal/integer',
+  name: 'math/integer/compare/equal',
   label: '=',
   in: ['integer', 'integer'],
   out: 'boolean',
@@ -115,7 +115,7 @@ export const Equal = makeInNOutFunctionDesc({
 });
 
 export const GreaterThan = makeInNOutFunctionDesc({
-  name: 'math/greaterThan/integer',
+  name: 'math/integer/compare/greaterThan',
   label: '>',
   in: ['integer', 'integer'],
   out: 'boolean',
@@ -123,7 +123,7 @@ export const GreaterThan = makeInNOutFunctionDesc({
 });
 
 export const GreaterThanOrEqual = makeInNOutFunctionDesc({
-  name: 'math/greaterThanOrEqual/integer',
+  name: 'math/integer/compare/greaterThanOrEqual',
   label: '≥',
   in: ['integer', 'integer'],
   out: 'boolean',
@@ -131,7 +131,7 @@ export const GreaterThanOrEqual = makeInNOutFunctionDesc({
 });
 
 export const LessThan = makeInNOutFunctionDesc({
-  name: 'math/lessThan/integer',
+  name: 'math/integer/compare/lessThan',
   label: '<',
   in: ['integer', 'integer'],
   out: 'boolean',
@@ -139,7 +139,7 @@ export const LessThan = makeInNOutFunctionDesc({
 });
 
 export const LessThanOrEqual = makeInNOutFunctionDesc({
-  name: 'math/lessThanOrEqual/integer',
+  name: 'math/integer/compare/lessThanOrEqual',
   label: '≤',
   in: ['integer', 'integer'],
   out: 'boolean',
@@ -147,7 +147,7 @@ export const LessThanOrEqual = makeInNOutFunctionDesc({
 });
 
 export const toBoolean = makeInNOutFunctionDesc({
-  name: 'math/toBoolean/integer',
+  name: 'math/integer/convert/toBoolean',
   label: 'To Boolean',
   in: ['integer'],
   out: 'boolean',

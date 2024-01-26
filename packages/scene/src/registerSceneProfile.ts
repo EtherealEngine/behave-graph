@@ -15,15 +15,12 @@ import {
   ColorValue,
   EulerNodes,
   EulerValue,
-  GetSceneProperty,
   Mat3Nodes,
   Mat3Value,
   Mat4Nodes,
   Mat4Value,
-  OnSceneNodeClick,
   QuatNodes,
   QuatValue,
-  SetSceneProperty,
   Vec2Nodes,
   Vec2Value,
   Vec3Nodes,
@@ -74,10 +71,10 @@ export const getSceneNodesMap = memo<Record<string, NodeDefinition>>(() => {
     ...getNodeDescriptions(Mat4Nodes),
 
     // events
-    OnSceneNodeClick,
+    //OnSceneNodeClick,
     // actions
-    ...SetSceneProperty(allValueTypeNames),
-    ...GetSceneProperty(allValueTypeNames),
+    //...SetSceneProperty(allValueTypeNames),
+    //...GetSceneProperty(allValueTypeNames),
 
     ...getSceneStringConversions(getSceneValuesMap())
   ];

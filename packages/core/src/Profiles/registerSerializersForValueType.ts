@@ -10,16 +10,17 @@ export function getStringConversionsForValueType({
   valueTypeName: string;
 }) {
   const camelCaseValueTypeName = toCamelCase(valueTypeName);
+
   return [
     makeInNOutFunctionDesc({
-      name: `math/to${camelCaseValueTypeName}/string`,
+      name: `logic/string/convert/to${camelCaseValueTypeName}`,
       label: `To ${camelCaseValueTypeName}`,
       in: ['string'],
       out: valueTypeName,
       exec: (a: string) => values[valueTypeName]?.deserialize(a)
     }),
     makeInNOutFunctionDesc({
-      name: `math/toString/${valueTypeName}`,
+      name: `math/${valueTypeName}/convert/toString`,
       label: 'To String',
       in: [valueTypeName],
       out: 'string',

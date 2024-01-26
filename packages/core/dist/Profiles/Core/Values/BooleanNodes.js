@@ -1,48 +1,48 @@
 import { makeInNOutFunctionDesc } from '../../../Nodes/FunctionNode.js';
 export const Constant = makeInNOutFunctionDesc({
-    name: 'math/boolean',
+    name: 'math/boolean/constant',
     label: 'Boolean',
     in: ['boolean'],
     out: 'boolean',
     exec: (a) => a
 });
 export const And = makeInNOutFunctionDesc({
-    name: 'math/and/boolean',
+    name: 'math/boolean/and',
     label: '∧',
     in: ['boolean', 'boolean'],
     out: 'boolean',
     exec: (a, b) => a && b
 });
 export const Or = makeInNOutFunctionDesc({
-    name: 'math/or/boolean',
+    name: 'math/boolean/or',
     label: '∨',
     in: ['boolean', 'boolean'],
     out: 'boolean',
     exec: (a, b) => a || b
 });
 export const Not = makeInNOutFunctionDesc({
-    name: 'math/negate/boolean',
+    name: 'math/boolean/negate',
     label: '¬',
     in: ['boolean'],
     out: 'boolean',
     exec: (a) => !a
 });
 export const ToFloat = makeInNOutFunctionDesc({
-    name: 'math/toFloat/boolean',
+    name: 'math/boolean/convert/toFloat',
     label: 'To Float',
     in: ['boolean'],
     out: 'float',
     exec: (a) => (a ? 1 : 0)
 });
 export const Equal = makeInNOutFunctionDesc({
-    name: 'math/equal/boolean',
+    name: 'math/boolean/compare/equal',
     label: '=',
     in: ['boolean', 'boolean'],
     out: 'boolean',
     exec: (a, b) => a === b
 });
 export const toInteger = makeInNOutFunctionDesc({
-    name: 'math/toInteger/boolean',
+    name: 'math/boolean/convert/toInteger',
     label: 'To Integer',
     in: ['boolean'],
     out: 'integer',

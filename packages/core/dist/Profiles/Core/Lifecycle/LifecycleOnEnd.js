@@ -4,7 +4,7 @@ const makeInitialState = () => ({
     onEndEvent: undefined
 });
 export const LifecycleOnEnd = makeEventNodeDefinition({
-    typeName: 'lifecycle/onEnd',
+    typeName: 'flow/lifecycle/onEnd',
     label: 'On End',
     category: NodeCategory.Event,
     in: {},

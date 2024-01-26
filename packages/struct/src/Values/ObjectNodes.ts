@@ -2,7 +2,7 @@ import { makeInNOutFunctionDesc, NodeCategory } from '@behave-graph/core';
 import { assocPath, equals, mergeDeepRight, path } from 'rambdax';
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'logic/object',
+  name: 'logic/object/constant',
   category: NodeCategory.Logic,
   label: 'Object',
   in: ['object'],
@@ -11,7 +11,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'logic/equal/object',
+  name: 'logic/object/compare/equal',
   category: NodeCategory.Logic,
   label: '=',
   in: ['object', 'object'],
@@ -42,7 +42,7 @@ export const AssocPath = makeInNOutFunctionDesc({
 });
 
 export const MergeDeep = makeInNOutFunctionDesc({
-  name: 'logic/mergeDeep/object',
+  name: 'logic/object/mergeDeep',
   category: NodeCategory.Logic,
   label: 'Merge Deep',
   in: ['object', 'object'],
@@ -51,7 +51,7 @@ export const MergeDeep = makeInNOutFunctionDesc({
 });
 
 export const Path = makeInNOutFunctionDesc({
-  name: 'logic/path/object',
+  name: 'logic/object/path/object',
   category: NodeCategory.Logic,
   label: 'Path',
   in: [
@@ -67,7 +67,7 @@ export const Path = makeInNOutFunctionDesc({
 });
 
 export const PathAsString = makeInNOutFunctionDesc({
-  name: 'logic/path/string',
+  name: 'logic/object/path/string',
   category: NodeCategory.Logic,
   label: 'Path',
   in: [
@@ -83,7 +83,7 @@ export const PathAsString = makeInNOutFunctionDesc({
 });
 
 export const PathAsInteger = makeInNOutFunctionDesc({
-  name: 'logic/path/integer',
+  name: 'logic/object/path/integer',
   category: NodeCategory.Logic,
   label: 'Path',
   in: [

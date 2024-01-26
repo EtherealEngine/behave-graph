@@ -1,6 +1,6 @@
 import { makeFlowNodeDefinition, NodeCategory } from '../../../Nodes/NodeDefinitions.js';
 export const FlipFlop = makeFlowNodeDefinition({
-    typeName: 'flow/flipFlop',
+    typeName: 'flow/decision/flipFlop',
     category: NodeCategory.Flow,
     label: 'Flip Flop',
     in: {

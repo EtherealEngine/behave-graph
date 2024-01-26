@@ -1,4 +1,5 @@
 import { Assert } from '../../../Diagnostics/Assert.js';
+import { NodeCategory } from '../../../index.js';
 import { AsyncNode } from '../../../Nodes/AsyncNode.js';
 import { NodeDescription } from '../../../Nodes/Registry/NodeDescription.js';
 import { Socket } from '../../../Sockets/Socket.js';
@@ -45,6 +46,6 @@ class Throttle extends AsyncNode {
         this.timeoutPending = false;
     }
 }
-Throttle.Description = new NodeDescription('flow/throttle', 'Flow', 'Throttle', (description, graph) => new Throttle(description, graph));
+Throttle.Description = new NodeDescription('flow/rate/throttle', NodeCategory.Flow, 'Throttle', (description, graph) => new Throttle(description, graph));
 export { Throttle };
 //# sourceMappingURL=Throttle.js.map

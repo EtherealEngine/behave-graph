@@ -4,7 +4,7 @@ import {
 } from '../../../Nodes/NodeDefinitions.js';
 
 export const Branch = makeFlowNodeDefinition({
-  typeName: 'flow/branch',
+  typeName: 'flow/decision/branch',
   category: NodeCategory.Flow,
   label: 'Branch',
   helpDescription:

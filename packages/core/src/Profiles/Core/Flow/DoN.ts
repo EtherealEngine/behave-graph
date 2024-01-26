@@ -6,8 +6,8 @@ import {
 // based on Unreal Engine Blueprint DoN node
 
 export const DoN = makeFlowNodeDefinition({
-  typeName: 'flow/doN',
-  label: 'DoN',
+  typeName: 'flow/repeat/n',
+  label: 'Repeat N Times',
   category: NodeCategory.Flow,
   in: {
     flow: 'flow',

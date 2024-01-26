@@ -24,7 +24,7 @@ import {
 } from '../../Values/Internal/Mat3.js';
 
 export const Constant = makeInNOutFunctionDesc({
-  name: 'math/mat3',
+  name: 'math/mat3/constant',
   label: 'Mat3',
   in: ['mat3'],
   out: 'mat3',
@@ -32,7 +32,7 @@ export const Constant = makeInNOutFunctionDesc({
 });
 
 export const Column3ToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/column3',
+  name: 'math/mat3/convert/toMat3/column3',
   label: 'Columns to Mat3',
   in: ['vec3', 'vec3', 'vec3'],
   out: 'mat3',
@@ -40,7 +40,7 @@ export const Column3ToMat3 = makeInNOutFunctionDesc({
 });
 
 export const SetColumn = makeInNOutFunctionDesc({
-  name: 'math/setColumn/mat3',
+  name: 'math/mat3/setColumn',
   label: 'Set Column',
   in: ['mat3', 'integer', 'vec3'],
   out: 'mat3',
@@ -48,7 +48,7 @@ export const SetColumn = makeInNOutFunctionDesc({
 });
 
 export const SetRow = makeInNOutFunctionDesc({
-  name: 'math/setRow/mat3',
+  name: 'math/mat3/setRow',
   label: 'Set Row',
   in: ['mat3', 'integer', 'vec3'],
   out: 'mat3',
@@ -56,7 +56,7 @@ export const SetRow = makeInNOutFunctionDesc({
 });
 
 export const Elements = makeInNOutFunctionDesc({
-  name: 'math/toVec3/mat3',
+  name: 'math/mat3/convert/toVec3',
   label: 'Mat3 To Vec3',
   in: ['mat3'],
   out: [{ x: 'vec3' }, { y: 'vec3' }, { z: 'vec3' }],
@@ -66,7 +66,7 @@ export const Elements = makeInNOutFunctionDesc({
 });
 
 export const Add = makeInNOutFunctionDesc({
-  name: 'math/add/mat3',
+  name: 'math/mat3/basic/add',
   label: '+',
   in: ['mat3', 'mat3'],
   out: 'mat3',
@@ -74,7 +74,7 @@ export const Add = makeInNOutFunctionDesc({
 });
 
 export const Subtract = makeInNOutFunctionDesc({
-  name: 'math/subtract/mat3',
+  name: 'math/mat3/basic/subtract',
   label: '-',
   in: ['mat3', 'mat3'],
   out: 'mat3',
@@ -82,7 +82,7 @@ export const Subtract = makeInNOutFunctionDesc({
 });
 
 export const Negate = makeInNOutFunctionDesc({
-  name: 'math/negate/mat3',
+  name: 'math/mat3/negate',
   label: '-',
   in: ['mat3'],
   out: 'mat3',
@@ -90,7 +90,7 @@ export const Negate = makeInNOutFunctionDesc({
 });
 
 export const Scale = makeInNOutFunctionDesc({
-  name: 'math/scale/mat3',
+  name: 'math/mat3/basic/scale',
   label: '×',
   in: ['mat3', 'float'],
   out: 'mat3',
@@ -98,7 +98,7 @@ export const Scale = makeInNOutFunctionDesc({
 });
 
 export const Determinant = makeInNOutFunctionDesc({
-  name: 'math/determinant/mat3',
+  name: 'math/mat3/determinant',
   label: 'Determinant',
   in: ['mat3'],
   out: 'float',
@@ -106,7 +106,7 @@ export const Determinant = makeInNOutFunctionDesc({
 });
 
 export const Inverse = makeInNOutFunctionDesc({
-  name: 'math/inverse/mat3',
+  name: 'math/mat3/basic/inverse',
   label: 'Inverse',
   in: ['mat3'],
   out: 'mat3',
@@ -114,7 +114,7 @@ export const Inverse = makeInNOutFunctionDesc({
 });
 
 export const Mat4ToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/mat4',
+  name: 'math/mat4/convert/toMat3',
   label: 'Mat4 To Mat3',
   in: ['mat4'],
   out: 'mat3',
@@ -122,7 +122,7 @@ export const Mat4ToMat3 = makeInNOutFunctionDesc({
 });
 
 export const Transpose = makeInNOutFunctionDesc({
-  name: 'math/transpose/mat3',
+  name: 'math/mat3/transpose',
   label: 'Transpose',
   in: ['mat3'],
   out: 'mat3',
@@ -130,7 +130,7 @@ export const Transpose = makeInNOutFunctionDesc({
 });
 
 export const Multiply = makeInNOutFunctionDesc({
-  name: 'math/multiply/mat3',
+  name: 'math/mat3/basic/multiply',
   label: 'Cross',
   in: ['mat3', 'mat3'],
   out: 'mat3',
@@ -138,7 +138,7 @@ export const Multiply = makeInNOutFunctionDesc({
 });
 
 export const Mix = makeInNOutFunctionDesc({
-  name: 'math/mix/mat3',
+  name: 'math/mat3/basic/mix',
   label: '÷',
   in: [{ a: 'mat3' }, { b: 'mat3' }, { t: 'float' }],
   out: 'mat3',
@@ -146,7 +146,7 @@ export const Mix = makeInNOutFunctionDesc({
 });
 
 export const Equal = makeInNOutFunctionDesc({
-  name: 'math/equal/mat3',
+  name: 'math/mat3/compare/equal',
   label: '=',
   in: [{ a: 'mat3' }, { b: 'mat3' }, { tolerance: 'float' }],
   out: 'boolean',
@@ -154,7 +154,7 @@ export const Equal = makeInNOutFunctionDesc({
 });
 
 export const EulerToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/euler',
+  name: 'math/euler/convert/toMat3',
   label: 'To Mat3',
   in: ['euler'],
   out: 'mat3',
@@ -162,7 +162,7 @@ export const EulerToMat3 = makeInNOutFunctionDesc({
 });
 
 export const QuatToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/quat',
+  name: 'math/quat/convert/toMat3',
   label: 'To Mat3',
   in: ['quat'],
   out: 'mat3',
@@ -170,7 +170,7 @@ export const QuatToMat3 = makeInNOutFunctionDesc({
 });
 
 export const Scale2ToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/scale2',
+  name: 'math/mat3/convert/toMat3/scale2',
   label: 'Scale2 To Mat3',
   in: ['vec2'],
   out: 'mat3',
@@ -178,7 +178,7 @@ export const Scale2ToMat3 = makeInNOutFunctionDesc({
 });
 
 export const Mat3ToScale2 = makeInNOutFunctionDesc({
-  name: 'math/toScale2/mat3',
+  name: 'math/mat3/toScale2',
   label: 'Mat3 to Scale2',
   in: ['mat3'],
   out: 'vec2',
@@ -186,7 +186,7 @@ export const Mat3ToScale2 = makeInNOutFunctionDesc({
 });
 
 export const Translation2ToMat3 = makeInNOutFunctionDesc({
-  name: 'math/toMat3/translation2',
+  name: 'math/mat3/convert/toMat3/translation2',
   label: 'Translation2 To Mat3',
   in: ['vec2'],
   out: 'mat3',
@@ -194,7 +194,7 @@ export const Translation2ToMat3 = makeInNOutFunctionDesc({
 });
 
 export const Mat3ToTranslation3 = makeInNOutFunctionDesc({
-  name: 'math/toTranslation2/mat3',
+  name: 'math/mat3/toTranslation2',
   label: 'Mat3 to Translation2',
   in: ['mat3'],
   out: 'vec2',

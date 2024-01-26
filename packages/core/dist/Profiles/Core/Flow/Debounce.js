@@ -32,6 +32,6 @@ class Debounce extends AsyncNode {
         this.triggerVersion++; // equivalent to 'cancel' trigger behavior.
     }
 }
-Debounce.Description = new NodeDescription('flow/debounce', 'Flow', 'Debounce', (description, graph) => new Debounce(description, graph));
+Debounce.Description = new NodeDescription('flow/rate/debounce', 'Flow', 'Debounce', (description, graph) => new Debounce(description, graph));
 export { Debounce };
 //# sourceMappingURL=Debounce.js.map

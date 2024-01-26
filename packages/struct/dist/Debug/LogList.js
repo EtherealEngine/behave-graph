@@ -17,5 +17,5 @@ export class LogList extends FlowNode {
         fiber.commit(this, 'flow');
     }
 }
-LogList.Description = (logger) => new NodeDescription('debug/log/list', NodeCategory.Action, 'Log', (description, graph) => new LogList(description, graph, logger));
+LogList.Description = (logger) => new NodeDescription('logic/list/log', NodeCategory.Action, 'Log', (description, graph) => new LogList(description, graph, logger));
 //# sourceMappingURL=LogList.js.map

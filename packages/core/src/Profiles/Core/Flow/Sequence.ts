@@ -6,7 +6,7 @@ import {
 // https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Blueprints/UserGuide/flow/
 
 export const Sequence = makeFlowNodeDefinition({
-  typeName: 'flow/sequence',
+  typeName: 'flow/decision/sequence',
   label: 'Sequence',
   configuration: {
     numOutputs: {
